@@ -7,8 +7,6 @@ package algorithms.searchAndSort.binarySearch;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a = {3, 4, 6, 8, 10, 12};
-        int[] uniformlySortedArray = {10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47};
 
     }
 
