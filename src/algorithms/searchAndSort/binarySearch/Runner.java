@@ -1,13 +1,16 @@
 package algorithms.searchAndSort.binarySearch;
 
 /**
- * @author rams0516
- *         Date: 4/4/2017
- *         Time: 3:17 PM
+ * Implements the following
+ * Iterative Binary Search
+ * Recursive Binary Search
+ * Interpolation Search
+ * Find the minimum element in a sorted and rotated array
  */
 public class Runner {
     public static void main(String[] args) {
-
+        int[] a= {2, 3, 4, 5, 6, 0, 1};
+        System.out.print(findMinimum(a, 0, a.length-1));
     }
 
     /**
@@ -17,7 +20,7 @@ public class Runner {
      * @param find
      * @return
      */
-    static int binItr(int[] a, int find) {
+    static int binarySearchIterative(int[] a, int find) {
         int left = 0;
         int right = a.length - 1;
 
@@ -44,16 +47,16 @@ public class Runner {
      * @param right
      * @return
      */
-    static int binRec(int[] a, int find, int left, int right) {
+    static int binarySearchRecursive(int[] a, int find, int left, int right) {
         if (left <= right) {
             int mid = (left + right) >> 1;
 
             if (a[mid] == find) return mid;
 
             if (a[mid] < find) {
-                return binRec(a, find, ++mid, right);
+                return binarySearchRecursive(a, find, ++mid, right);
             } else {
-                return binRec(a, find, left, --mid);
+                return binarySearchRecursive(a, find, left, --mid);
             }
         }
         return -1;
@@ -84,4 +87,57 @@ public class Runner {
         }
         return -1;
     }
+
+    /**
+     * Find the minimum element in a sorted and rotated array
+     * Time complexity : O(log n), worst case O(n) when duplicates present in the array
+     * Made use of binary search divide and conquer method
+     */
+    static int findMinimum(int[] a, int low, int high) {
+        /**
+         *
+         */
+        if(high < low) {
+            return a[0];
+        }
+
+        /**
+         * If there is just one element in the sub array, low and high becomes the same
+         */
+        if(high == low) {
+            return a[low];
+        }
+
+        int mid = (low+high)/2;
+
+        /**
+         * Check if the element next to middle is less than the element at middle, in that case element next to middle
+         * is the required least number
+         */
+        if(mid < high && a[mid+1] < a[mid]) {
+            return a[mid+1];
+        }
+
+        /**
+         * Check if the element previous to mid is greater than the element at middle, in that case element at middle is
+         * the required least number
+         */
+        if(mid > low && a[mid] < a[mid-1]) {
+            return a[mid];
+        }
+
+
+        if(a[high] > a[mid]) {
+            /**
+             * Search in left
+             */
+            return findMinimum(a, low, mid-1);
+        } else {
+            /**
+             * Search in right
+             */
+            return findMinimum(a, mid+1, high);
+        }
+    }
+
 }
