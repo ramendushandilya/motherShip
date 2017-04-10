@@ -6,11 +6,14 @@ package algorithms.searchAndSort.binarySearch;
  * Recursive Binary Search
  * Interpolation Search
  * Find the minimum element in a sorted and rotated array
+ * Find Peak element in an array
+ * Find local minimum in an array
+ * Find the fixed point in an array
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {4, 3, 1, 14, 16, 40};
-        System.out.print(findLocalMinima(a, 0, a.length-1));
+        int[] a= {-10, -5, 0, 3, 7};
+        System.out.print(findFixedPoint(a, 0, a.length-1));
     }
 
     /**
@@ -172,6 +175,13 @@ public class Runner {
         }
     }
 
+    /**
+     * Find the local Minimum in an array, works in O(log n)
+     * @param a
+     * @param low
+     * @param high
+     * @return
+     */
     static int findLocalMinima(int[] a, int low, int high) {
         while(true) {
             int mid = (low + high)/2;
@@ -190,6 +200,35 @@ public class Runner {
                 low = ++mid;
             }
         }
+    }
+
+    /**
+     * Find the fixed point in array, point where index is equal to the value at index, runs in O(log n)
+     * @param a, is in increasing order
+     * @param low
+     * @param high
+     * @return
+     */
+    static int findFixedPoint(int[] a, int low, int high) {
+        while(low <= high) {
+            int mid = (low + high) / 2;
+
+            /**
+             * If element found at the middle index, return it
+             */
+            if (mid == a[mid]) {
+                return mid;
+            }
+            /**
+             * If the middle is greater than the element at the middle, search in the right side
+             */
+            else if (mid > a[mid]) {
+                low = ++mid;
+            } else{
+                high = --mid;
+            }
+        }
+        return -1;
     }
 
 }
