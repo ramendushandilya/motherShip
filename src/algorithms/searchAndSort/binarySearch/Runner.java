@@ -10,7 +10,8 @@ package algorithms.searchAndSort.binarySearch;
 public class Runner {
     public static void main(String[] args) {
         int[] a= {2, 3, 4, 5, 6, 0, 1};
-        System.out.print(findMinimum(a, 0, a.length-1));
+        //int[] a= {5,6,7,8,9};
+        System.out.print(findPeak(a, 0, a.length-1));
     }
 
     /**
@@ -138,6 +139,43 @@ public class Runner {
              */
             return findMinimum(a, mid+1, high);
         }
+    }
+
+    /**
+     * Find the peak element in an array
+     * Runs in O(log n)
+     * @param a
+     * @param low
+     * @param high
+     * @return
+     */
+    static int findPeak(int[] a, int low, int high) {
+
+        while(true) {
+            int mid = (low + high)/2;
+
+            /**
+             * Compare middle element with neighbours, checking mid equals to zero or array length minus one is needed
+             * for the corner cases where the array is either strictly increasing or decreasing
+             */
+            if((mid == 0 || a[mid-1] <= a[mid]) && (mid == a.length-1 || a[mid+1] <= a[mid])) {
+                return mid;
+            }
+
+            /**
+             * If left neighbour is greater than middle, search in left
+             */
+            else if(a[mid] < a[mid-1] && mid > 0) {
+                high = --mid;
+            } else {
+                low = ++mid;
+            }
+        }
+    }
+
+    static int findLocalMinima(int[] a, int low, int high) {
+
+        return 0;
     }
 
 }
