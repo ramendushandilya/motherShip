@@ -9,9 +9,8 @@ package algorithms.searchAndSort.binarySearch;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {2, 3, 4, 5, 6, 0, 1};
-        //int[] a= {5,6,7,8,9};
-        System.out.print(findPeak(a, 0, a.length-1));
+        int[] a= {4, 3, 1, 14, 16, 40};
+        System.out.print(findLocalMinima(a, 0, a.length-1));
     }
 
     /**
@@ -174,8 +173,23 @@ public class Runner {
     }
 
     static int findLocalMinima(int[] a, int low, int high) {
-
-        return 0;
+        while(true) {
+            int mid = (low + high)/2;
+            /**
+             * Compare middle element with neighbour and see if it's less than them
+             */
+            if((mid == 0 || a[mid] <= a[mid-1]) && (mid == a.length-1 || a[mid] <= a[mid+1])) {
+                return mid;
+            }
+            /**
+             * If the element is greater than the element on it's left, search in left
+             */
+            else if(mid > 0 && a[mid] > a[mid-1]) {
+                high = --mid;
+            } else {
+                low = ++mid;
+            }
+        }
     }
 
 }
