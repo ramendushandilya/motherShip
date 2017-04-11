@@ -12,6 +12,7 @@ import java.util.Arrays;
  * Find local minimum in an array
  * Find the fixed point in an array
  * Find the frequency of an element in sorted array
+ * Find the median of two sorted arrays with equal number of elements
  */
 public class Runner {
     public static void main(String[] args) {
@@ -343,5 +344,16 @@ public class Runner {
             }
             return findMedian(Arrays.copyOfRange(arrayOne, arrayOne.length>>1, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, (arrayTwo.length>>1)+ 1));
         }
+    }
+
+    /**
+     * Find the median of the two sorted arrays of different lengths
+     * @param arrayOne
+     * @param arrayTwo
+     * @return
+     */
+    static int findMedianUnequalSize(int[] arrayOne, int[] arrayTwo) {
+        //TODO provide fix for this
+        return 0;
     }
 }
