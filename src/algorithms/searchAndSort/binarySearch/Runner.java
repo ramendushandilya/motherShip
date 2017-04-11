@@ -15,8 +15,8 @@ import java.util.Arrays;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {1, 2, 3, 6};
-        int[] aa = {4, 6, 8, 10};
+        int[] a= {1, 12, 15, 26, 38};
+        int[] aa = {2, 13, 17, 30, 45};
         System.out.print(findMedian(a, aa));
     }
 
@@ -327,13 +327,21 @@ public class Runner {
         }
 
         /**
-         * TODO index of median to be made use of, not values
+         * If median one is greater than median two, then the median lies either in Left sub of Array One or Right sub of
+         * Array Two, else wise for the else case. Check of even numbers of elements in sub array is done since the way we
+         * extract the sub array shall differ in case of whether it's odd or even
          */
-        if(medianOne < medianTwo) {
-            return findMedian(Arrays.copyOfRange(arrayOne, 0, medianOne+1), Arrays.copyOfRange(arrayTwo, medianTwo, arrayTwo.length));
+        if(medianOne > medianTwo) {
+            if(arrayOne.length % 2 == 0) {
+                return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1) + 1), Arrays.copyOfRange(arrayTwo, (arrayTwo.length>>1)- 1, arrayTwo.length));
+            }
+            return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1)+ 1), Arrays.copyOfRange(arrayTwo, arrayTwo.length>>1, arrayTwo.length));
         }
         else{
-            return findMedian(Arrays.copyOfRange(arrayOne, medianOne, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, medianTwo+1));
+            if(arrayOne.length % 2 == 0) {
+                return findMedian(Arrays.copyOfRange(arrayOne, (arrayOne.length>>1)- 1, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, arrayOne.length>>1 + 1));
+            }
+            return findMedian(Arrays.copyOfRange(arrayOne, arrayOne.length>>1, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, (arrayTwo.length>>1)+ 1));
         }
     }
 }
