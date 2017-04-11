@@ -9,11 +9,12 @@ package algorithms.searchAndSort.binarySearch;
  * Find Peak element in an array
  * Find local minimum in an array
  * Find the fixed point in an array
+ * Find the frequency of an element in sorted array
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {-10, -5, 0, 3, 7};
-        System.out.print(findFixedPoint(a, 0, a.length-1));
+        int[] a= {1, 2, 2, 2, 2, 3, 4, 7 ,8 ,8};
+        System.out.print(findFrequency(a, 8));
     }
 
     /**
@@ -226,6 +227,64 @@ public class Runner {
                 low = ++mid;
             } else{
                 high = --mid;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Find the first occurrence and the last occurrence, the difference gives the frequency count
+     * @param a
+     * @param element
+     * @return
+     */
+    static int findFrequency(int[] a, int element) {
+        int begin = findFirstOccurrence(a, 0, a.length-1, element);
+        if (begin == -1) {
+            return begin;
+        }
+        return findLastOccurrence(a, 0, a.length-1, element) - begin + 1;
+    }
+
+    /**
+     * Find the last occurrence using binary search
+     * @param a
+     * @param low
+     * @param high
+     * @param element
+     * @return
+     */
+    static int findLastOccurrence(int[] a, int low, int high, int element) {
+        if(low <= high) {
+            int mid = (low + high) >> 1;
+            if(mid == a.length-1 || element < a[mid+1] && a[mid] == element) {
+                return mid;
+            } else if(element < a[mid]) {
+                return findLastOccurrence(a, low, --mid, element);
+            } else {
+                return findLastOccurrence(a, ++mid, high, element);
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Find the first occurrence using binary search
+     * @param a
+     * @param low
+     * @param high
+     * @param element
+     * @return
+     */
+    static int findFirstOccurrence(int[] a, int low, int high, int element) {
+        if(low <= high) {
+            int mid = (low + high) >> 1;
+            if((mid == 0 || element > a[mid-1]) && a[mid] == element) {
+                return mid;
+            } else if(element > a[mid]) {
+                return findFirstOccurrence(a, ++mid, high, element);
+            } else {
+                return findFirstOccurrence(a, low, --mid, element);
             }
         }
         return -1;
