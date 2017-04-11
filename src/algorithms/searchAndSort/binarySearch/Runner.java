@@ -16,9 +16,8 @@ import java.util.Arrays;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {1, 12, 15, 26, 38};
-        int[] aa = {2, 13, 17, 30, 45};
-        System.out.print(findMedian(a, aa));
+        int[] a= {1, 2, 8, 10, 10, 12, 19};
+        System.out.print(findCeil(a, 0, 0, a.length-1));
     }
 
     /**
@@ -334,15 +333,19 @@ public class Runner {
          */
         if(medianOne > medianTwo) {
             if(arrayOne.length % 2 == 0) {
-                return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1) + 1), Arrays.copyOfRange(arrayTwo, (arrayTwo.length>>1)- 1, arrayTwo.length));
+                return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1) + 1),
+                        Arrays.copyOfRange(arrayTwo, (arrayTwo.length>>1)- 1, arrayTwo.length));
             }
-            return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1)+ 1), Arrays.copyOfRange(arrayTwo, arrayTwo.length>>1, arrayTwo.length));
+            return findMedian(Arrays.copyOfRange(arrayOne, 0, (arrayOne.length>>1)+ 1),
+                    Arrays.copyOfRange(arrayTwo, arrayTwo.length>>1, arrayTwo.length));
         }
         else{
             if(arrayOne.length % 2 == 0) {
-                return findMedian(Arrays.copyOfRange(arrayOne, (arrayOne.length>>1)- 1, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, arrayOne.length>>1 + 1));
+                return findMedian(Arrays.copyOfRange(arrayOne, (arrayOne.length>>1)- 1,
+                        arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, arrayOne.length>>1 + 1));
             }
-            return findMedian(Arrays.copyOfRange(arrayOne, arrayOne.length>>1, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, (arrayTwo.length>>1)+ 1));
+            return findMedian(Arrays.copyOfRange(arrayOne, arrayOne.length>>1, arrayOne.length),
+                    Arrays.copyOfRange(arrayTwo, 0, (arrayTwo.length>>1)+ 1));
         }
     }
 
@@ -354,6 +357,68 @@ public class Runner {
      */
     static int findMedianUnequalSize(int[] arrayOne, int[] arrayTwo) {
         //TODO provide fix for this
+        return 0;
+    }
+
+    /**
+     * Find the ceiling element in the sorted array
+     * @param array
+     * @param element
+     * @param low
+     * @param high
+     * @return
+     */
+    static int findCeil(int[] array, int element, int low, int high) {
+        if(element < array[0]) return -1;
+        if(element > array[array.length-1]) return -1;
+
+        int mid = (low + high) >> 1;
+
+        if(array[mid] == element) {
+            return mid;
+        } else if(array[mid] > element) {
+            if(mid-1 >= low && element > array[mid-1]) {
+                return mid-1;
+            } else {
+                return findCeil(array, element, low, mid-1);
+            }
+        } else {
+            if(mid+1 <= high && element <= array[mid+1]) {
+                return mid+1;
+            } else {
+                return findCeil(array, element, mid+1, high);
+            }
+        }
+    }
+
+    /**
+     * Find floor for element in a sorted array
+     * @param array
+     * @param element
+     * @param low
+     * @param high
+     * @return
+     */
+    static int findFloor(int[] array, int element, int low, int high) {
+        return 0;
+    }
+
+    /**
+     * Find Ceil and floor for an element in an unsorted array
+     * @param array
+     * @param element
+     * @return
+     */
+    static int findFloorCeilUnsorted(int[] array, int element) {
+        return 0;
+    }
+
+    /**
+     * Find the maximum element in an array which is increasing at first and then decreases
+     * @param array
+     * @return
+     */
+    static int findMaxIncDec(int[] array) {
         return 0;
     }
 }
