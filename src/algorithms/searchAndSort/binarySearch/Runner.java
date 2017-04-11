@@ -1,5 +1,7 @@
 package algorithms.searchAndSort.binarySearch;
 
+import java.util.Arrays;
+
 /**
  * Implements the following
  * Iterative Binary Search
@@ -13,8 +15,9 @@ package algorithms.searchAndSort.binarySearch;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {1, 2, 2, 2, 2, 3, 4, 7 ,8 ,8};
-        System.out.print(findFrequency(a, 8));
+        int[] a= {1, 2, 3, 6};
+        int[] aa = {4, 6, 8, 10};
+        System.out.print(findMedian(a, aa));
     }
 
     /**
@@ -290,4 +293,47 @@ public class Runner {
         return -1;
     }
 
+    /**
+     * Find the median element in an array
+     * @param a
+     * @return
+     */
+    static int median(int[] a) {
+        if(a.length % 2 == 0) {
+            return (a[a.length/2] + a[(a.length >> 1) - 1])/2;
+        } else {
+            return a[a.length/2];
+        }
+    }
+
+    /**
+     * Find the median of two sorted arrays of the same length
+     * @param arrayOne
+     * @param arrayTwo
+     * @return
+     */
+    static int findMedian(int[] arrayOne, int[] arrayTwo) {
+        if(arrayOne.length == 0) return -1;
+
+        if(arrayOne.length == 1) return (arrayOne[0] + arrayTwo[0]) >> 1;
+
+        if(arrayOne.length == 2) return (Math.max(arrayOne[0], arrayTwo[0]) + Math.min(arrayOne[1], arrayTwo[1])) >> 1;
+
+        int medianOne = median(arrayOne);
+        int medianTwo = median(arrayTwo);
+
+        if(medianOne == medianTwo) {
+            return medianOne;
+        }
+
+        /**
+         * TODO index of median to be made use of, not values
+         */
+        if(medianOne < medianTwo) {
+            return findMedian(Arrays.copyOfRange(arrayOne, 0, medianOne+1), Arrays.copyOfRange(arrayTwo, medianTwo, arrayTwo.length));
+        }
+        else{
+            return findMedian(Arrays.copyOfRange(arrayOne, medianOne, arrayOne.length), Arrays.copyOfRange(arrayTwo, 0, medianTwo+1));
+        }
+    }
 }
