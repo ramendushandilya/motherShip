@@ -13,11 +13,15 @@ import java.util.Arrays;
  * Find the fixed point in an array
  * Find the frequency of an element in sorted array
  * Find the median of two sorted arrays with equal number of elements
+ * Find the median of two sorted arrays with unequal number of elements
+ * Find Floor and Ceiling in sorted array
+ * Find floor and Ceiling in unsorted array
+ * Find the maximum element in array which increases and then decreases
  */
 public class Runner {
     public static void main(String[] args) {
         int[] a= {1, 2, 8, 10, 10, 12, 19};
-        System.out.print(findCeil(a, 0, 0, a.length-1));
+        findFloorCeilUnsorted(a, 5);
     }
 
     /**
@@ -400,7 +404,33 @@ public class Runner {
      * @return
      */
     static int findFloor(int[] array, int element, int low, int high) {
-        return 0;
+        if(low > high) {
+            return -1;
+        }
+
+        if(element < array[0]) {
+            return -1;
+        }
+
+        if(element > array[high]) {
+            return array[high];
+        }
+
+        int mid = (low + high)>>1;
+
+        if(array[mid] == element) {
+            return mid;
+        }
+
+        if(mid >0 && array[mid-1] < element && element < array[mid]) {
+            return mid-1;
+        }
+
+        if(element < array[mid]) {
+            return findFloor(array, element, low, --mid);
+        } else {
+            return findFloor(array, element, ++mid, high);
+        }
     }
 
     /**
@@ -409,8 +439,37 @@ public class Runner {
      * @param element
      * @return
      */
-    static int findFloorCeilUnsorted(int[] array, int element) {
-        return 0;
+    static void findFloorCeilUnsorted(int[] array, int element) {
+        int floorIndex = -1;
+        int ceilIndex = -1;
+        int floorDistance = Integer.MAX_VALUE;
+        int ceilDistance = Integer.MAX_VALUE;
+
+        for(int i = 0 ; i < array.length ; i++) {
+            //Find floor
+            if(array[i] >= element && floorDistance > (array[i] - element)) {
+                floorIndex= i;
+                floorDistance = array[i] - element;
+            }
+
+            //Find Ceil
+            if(array[i] <= element && ceilDistance > (element - array[i])) {
+                ceilIndex = i;
+                ceilDistance = element - array[i];
+            }
+        }
+
+        if(ceilDistance == Integer.MAX_VALUE) {
+            System.out.print("No ceiling value present");
+        } else {
+            System.out.print("The Ceil value is "+array[ceilIndex]);
+        }
+
+        if(floorDistance == Integer.MAX_VALUE) {
+            System.out.print("No floor value present");
+        } else {
+            System.out.print("The Floor value is "+array[floorIndex]);
+        }
     }
 
     /**
@@ -419,6 +478,7 @@ public class Runner {
      * @return
      */
     static int findMaxIncDec(int[] array) {
+        
         return 0;
     }
 }
