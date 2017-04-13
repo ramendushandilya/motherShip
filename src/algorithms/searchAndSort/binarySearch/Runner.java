@@ -20,8 +20,8 @@ import java.util.Arrays;
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {1, 2, 8, 10, 10, 12, 19};
-        findFloorCeilUnsorted(a, 5);
+        int[] a= {120, 100, 80, 20, 0};
+        System.out.print(findMaxIncDec(a, 0, a.length-1));
     }
 
     /**
@@ -477,8 +477,29 @@ public class Runner {
      * @param array
      * @return
      */
-    static int findMaxIncDec(int[] array) {
-        
-        return 0;
+    static int findMaxIncDec(int[] array, int low, int high) {
+        //If there is just one element in the array
+        if(low == high){
+            return array[low];
+        }
+        //If the array contains just two elements and first is greater than the second one
+        if(high == low+1 && array[low] > array[high]) {
+            return array[low];
+        }
+        //If the array contains just two elements and the second is greater than the first one
+        if(high == low +1 && array[low] < array[high]) {
+            return array[high];
+        }
+        int mid = (low+high)>>1;
+        //If the element at mid is greater than both it's neighbours
+        if(array[mid] > array[mid+1] && array[mid] > array[mid-1]) {
+            return array[mid];
+        }
+        //If the element is greater than the element next to it and less than the element previous to it, search left
+        if(array[mid] > array[mid+1] && array[mid] < array[mid-1]) {
+            return findMaxIncDec(array, low, --mid);
+        } else {
+            return findMaxIncDec(array, ++mid, high);
+        }
     }
 }
