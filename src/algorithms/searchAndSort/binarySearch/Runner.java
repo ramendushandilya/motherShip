@@ -541,4 +541,16 @@ public class Runner {
 
         return -1;
     }
+
+    static int exponentialSearch(int[] array, int element) {
+        //TODO
+        return 0;
+    }
+
+    static int unboundedBinarySearch(int[] array, int element) {
+        //TODO
+        return 0;
+    }
+
+
 }
