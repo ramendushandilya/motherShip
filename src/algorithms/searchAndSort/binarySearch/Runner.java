@@ -1,6 +1,7 @@
 package algorithms.searchAndSort.binarySearch;
 
 import java.util.Arrays;
+import java.util.jar.Pack200;
 
 /**
  * Implements the following
@@ -17,11 +18,13 @@ import java.util.Arrays;
  * Find Floor and Ceiling in sorted array
  * Find floor and Ceiling in unsorted array
  * Find the maximum element in array which increases and then decreases
+ * Find the element in a sorted array using Jump Search
  */
 public class Runner {
     public static void main(String[] args) {
-        int[] a= {120, 100, 80, 20, 0};
-        System.out.print(findMaxIncDec(a, 0, a.length-1));
+        int[] a= {0, 1, 1, 2, 3, 5, 8, 13, 21,
+                34, 55, 89, 144, 233, 377, 610};
+        System.out.print(jumpSearch(a, 610));
     }
 
     /**
@@ -501,5 +504,41 @@ public class Runner {
         } else {
             return findMaxIncDec(array, ++mid, high);
         }
+    }
+
+    /**
+     * Jump search to find element, complexity of O(square root(n)), lies between linear search and binary search
+     * @param array
+     * @param element
+     * @return
+     */
+    static int jumpSearch(int[] array, int element) {
+        int jumpBlock = (int) Math.sqrt(array.length);
+        int i = 0;
+        while(i <= array.length-1 && array[i] <= element) {
+            i += jumpBlock;
+        }
+        if(i > array.length-1) {
+            i-= jumpBlock;
+        }
+        if(array[i] >element) {
+            while(true) {
+                if(array[i] == element) {
+                    return i;
+                } else {
+                    i--;
+                }
+            }
+        } else {
+            while(i < array.length) {
+                if(array[i] == element) {
+                    return i;
+                } else {
+                    i++;
+                }
+            }
+        }
+
+        return -1;
     }
 }
