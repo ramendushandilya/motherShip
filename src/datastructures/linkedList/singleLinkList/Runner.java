@@ -12,10 +12,9 @@ public class Runner {
         linkList.insertNodeAtBeginning(22);
         linkList.insertNodeAtBeginning(32);
         linkList.insertNodeAtBeginning(42);
+        linkList.insertNodeAtBeginning(52);
 
         linkList.showList();
-
-        System.out.println(linkList.getN(0));
-        linkList.removeByReference();
+        linkList.findLoop();
     }
 }

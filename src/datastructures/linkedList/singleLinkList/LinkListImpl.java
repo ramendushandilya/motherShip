@@ -83,5 +83,91 @@ public class LinkListImpl {
         showList();
     }
 
+    /**
+     * Finds the middle element of a link list, if even numbered return the second mid element, or else the middle one
+     * @return
+     */
+    public int findMiddleElement() {
+        Node slowRef = head;
+        Node fastRef = head;
 
+        while(true) {
+            slowRef = slowRef.getNext();
+            fastRef = fastRef.getNext().getNext();
+            if(fastRef == null) break;
+            if(fastRef.getNext() == null) break;
+        }
+        return slowRef.getData();
+    }
+
+    /**
+     * Get the Nth node from the last
+     * @param n
+     * @return
+     */
+    public int getNFromLast(int n) {
+        Node fast = head;
+        Node slow = head;
+
+        int count = 0;
+        while(count != n) {
+            count++;
+            fast = fast.getNext();
+        }
+        while(fast != null) {
+            slow = slow.getNext();
+            fast = fast.getNext();
+        }
+        return slow.getData();
+    }
+
+    /**
+     * Reverses a link list
+     * @return
+     */
+    public Node reverseList() {
+        Node prev = null;
+        Node current = head;
+        Node next = head;
+
+        while(next != null) {
+            next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return head;
+    }
+
+    /**
+     * Make loop in the link list
+     */
+    public void makeLoop() {
+        Node two = head;
+        two.getNext().getNext().getNext().getNext().setNext(two.getNext().getNext());
+    }
+
+    /**
+     * Find loop in the link list
+     */
+    public void findLoop() {
+        Node slow = head;
+        Node fast = head;
+        boolean flag = false;
+
+        while(fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+
+            if(slow == fast) {
+                System.out.println("There is a loop present");
+                flag = true;
+                break;
+            }
+        }
+        if(flag == false) {
+            System.out.println("There is no loop present");
+        }
+    }
 }
