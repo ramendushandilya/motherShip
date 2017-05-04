@@ -125,7 +125,7 @@ public class LinkListImpl {
      * Reverses a link list
      * @return
      */
-    public Node reverseList() {
+    public Node reverseList(Node head) {
         Node prev = null;
         Node current = head;
         Node next = head;
@@ -168,6 +168,51 @@ public class LinkListImpl {
         }
         if(flag == false) {
             System.out.println("There is no loop present");
+        }
+    }
+
+    public boolean isPalindrome() {
+        Node pivot = null;
+        Node first = head;
+        Node second = head;
+        int flag = 0;
+
+        while(second != null && second.getNext() != null) {
+            first = first.getNext();
+            second = second.getNext().getNext();
+            pivot = first;
+
+            if(second == null) {
+                flag = 1; // Even number of nodes contained
+            }
+        }
+        if(flag == 1) {
+            pivot.setNext(reverseList(pivot.getNext()));
+            first = head;
+            second = pivot.getNext();
+
+            while(second != null) {
+                if(second.getData() != first.getData()) {
+                    //Reconstruct list
+                    return false;
+                }
+                first = first.getNext();
+                second = second.getNext();
+            }
+            return true;
+        } else {
+            pivot.getNext().setNext(reverseList(pivot.getNext().getNext()));
+            first = head;
+            second = pivot.getNext().getNext();
+            while(second != null) {
+                if(second.getData() != first.getData()) {
+                    //Reconstruct list
+                    return false;
+                }
+                first = first.getNext();
+                second = second.getNext();
+            }
+            return true;
         }
     }
 }

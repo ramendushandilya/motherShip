@@ -15,6 +15,6 @@ public class Runner {
         linkList.insertNodeAtBeginning(52);
 
         linkList.showList();
-        linkList.findLoop();
+        linkList.showList();
     }
 }
