@@ -171,6 +171,10 @@ public class LinkListImpl {
         }
     }
 
+    /**
+     * Find if a list is palindrome or not
+     * @return
+     */
     public boolean isPalindrome() {
         Node pivot = null;
         Node first = head;
@@ -214,5 +218,30 @@ public class LinkListImpl {
             }
             return true;
         }
+    }
+
+    /**
+     * Write a recursive function treeToList(Node root) that takes an ordered binary tree and rearranges the internal
+     * pointers to make a circular doubly linked list out of the tree nodes. The”previous” pointers should be stored
+     * in the “small” field and the “next” pointers should be stored in the “large” field. The list should be arranged
+     * so that the nodes are in increasing order. Return the head pointer to the new list.
+     * @param root
+     */
+    public void treeToList(Node root) {
+        //TODO
+    }
+
+    /**
+     * Clone a link list which has next and an arbitrary pointer
+     * @return
+     */
+    public Node cloneListWithRandomReference() {
+        /**
+         * Make copy of node 1 between node 1 and 2, and so on for the node N make it's copy between Node n and the null
+         * space. Set the arbitrary link like current.getNext().setArbit(current.getArbit().getNext());
+         * At the end of it all, segregate Original and clone nodes and build the two lists, at last return the head to
+         * clone node.
+         */
+        return null;
     }
 }
