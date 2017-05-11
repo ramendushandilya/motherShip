@@ -7,14 +7,17 @@ package datastructures.linkedList.singleLinkList;
  */
 public class Runner {
     public static void main(String[] args) {
-        LinkListImpl linkList = new LinkListImpl();
-        linkList.insertNodeAtBeginning(52);
-        linkList.insertNodeAtBeginning(42);
-        linkList.insertNodeAtBeginning(32);
-        linkList.insertNodeAtBeginning(22);
-        linkList.insertNodeAtBeginning(12);
-        linkList.showList();
-        linkList.insertIntoSortedList(35);
-        linkList.showList();
+        LinkListImpl linkOne = new LinkListImpl();
+        linkOne.insertNodeAtBeginning(52);
+        linkOne.insertNodeAtBeginning(42);
+        linkOne.insertNodeAtBeginning(32);
+        linkOne.insertNodeAtBeginning(22);
+        linkOne.insertNodeAtBeginning(12);
+
+        LinkListImpl linkTwo = new LinkListImpl();
+        linkTwo.insertNodeAtBeginning(10);
+        linkTwo.head.setNext(linkOne.head.getNext().getNext().getNext());
+
+        linkOne.findIntersection(linkOne.head, linkTwo.head);
     }
 }

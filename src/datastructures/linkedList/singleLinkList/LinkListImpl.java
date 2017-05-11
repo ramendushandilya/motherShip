@@ -267,5 +267,57 @@ public class LinkListImpl {
         node.setNext(current);
     }
 
+    /**
+     * Find the intersection point of two linked lists
+     * @param listOne
+     * @param listTwo
+     */
+    public void findIntersection(Node listOne, Node listTwo) {
+        int countOne = 0;
+        int countTwo = 0;
+        int difference;
+        Node cursorOne = listOne;
+        Node cursorTwo = listTwo;
+        while(cursorOne != null) {
+            countOne++;
+            cursorOne = cursorOne.getNext();
+        }
+        while(cursorTwo != null) {
+            countTwo++;
+            cursorTwo = cursorTwo.getNext();
+        }
 
+        if(countOne > countTwo) {
+            cursorOne = head;
+            difference = countOne-countTwo;
+            while(difference != 0) {
+                difference = difference - 1;
+                cursorOne = cursorOne.getNext();
+            }
+            System.out.println("Pre = "+cursorTwo.getData());
+            intersectionHelper(cursorOne, cursorTwo);
+        } else if(countOne < countTwo){
+            cursorTwo = head;
+            difference = countTwo-countOne;
+            while(difference != 0) {
+                difference = difference - 1;
+                cursorTwo = cursorTwo.getNext();
+            }
+            intersectionHelper(cursorOne, cursorTwo);
+        } else {
+            intersectionHelper(cursorOne, cursorTwo);
+        }
+    }
+
+    public void intersectionHelper(Node cursorOne, Node cursorTwo) {
+        System.out.println("ok  = "+cursorOne.getData());
+        System.out.println("ok ok = "+cursorTwo.getData());
+        while (cursorOne != null) {
+            if(cursorOne == cursorTwo) {
+                System.out.println("The point of intersection is = "+cursorOne.getData());
+            }
+            cursorOne = cursorOne.getNext();
+            cursorTwo = cursorTwo.getNext();
+        }
+    }
 }
