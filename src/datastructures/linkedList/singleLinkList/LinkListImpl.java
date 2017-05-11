@@ -244,4 +244,28 @@ public class LinkListImpl {
          */
         return null;
     }
+
+    /**
+     * Insert a node in an already sorted array
+     * @param data
+     */
+    public void insertIntoSortedList(int data) {
+        Node node = new Node(data);
+        Node previous = null;
+        Node current = head;
+        if(head == null) {
+            head = node;
+        }
+        while(current.getData() < data) {
+            previous = current;
+            current = current.getNext();
+            if(current == null) {
+                break;
+            }
+        }
+        previous.setNext(node);
+        node.setNext(current);
+    }
+
+
 }
