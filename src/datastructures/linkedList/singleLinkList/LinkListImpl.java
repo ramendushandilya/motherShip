@@ -333,4 +333,18 @@ public class LinkListImpl {
             System.out.print(iterator.getData()+" - ");
         }
     }
+
+    /**
+     * Remove the duplicate elements in a sorted increasing array
+     */
+    public void removeDupSortedArray() {
+        Node current = head;
+        while(current.getNext() != null) {
+            if(current.getNext().getData() == current.getData()) {
+                current.setNext(current.getNext().getNext());
+            } else {
+                current = current.getNext();
+            }
+        }
+    }
 }

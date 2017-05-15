@@ -14,7 +14,15 @@ public class Runner {
         linkOne.insertNodeAtBeginning(22);
         linkOne.insertNodeAtBeginning(12);
 
-        linkOne.showList();
-        linkOne.printRev(linkOne.head);
+        LinkListImpl linkTwo = new LinkListImpl();
+        linkTwo.insertNodeAtBeginning(60);
+        linkTwo.insertNodeAtBeginning(43);
+        linkTwo.insertNodeAtBeginning(43);
+        linkTwo.insertNodeAtBeginning(21);
+        linkTwo.insertNodeAtBeginning(11);
+        linkTwo.insertNodeAtBeginning(11);
+        linkTwo.insertNodeAtBeginning(11);
+
+
     }
 }
