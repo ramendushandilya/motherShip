@@ -16,7 +16,8 @@ public class Runner {
 
         LinkListImpl linkTwo = new LinkListImpl();
         linkTwo.insertNodeAtBeginning(10);
-        linkTwo.head.setNext(linkOne.head.getNext().getNext().getNext());
+        linkTwo.insertNodeAtBeginning(13);
+        linkTwo.head.getNext().setNext(linkOne.head.getNext().getNext());
 
         linkOne.findIntersection(linkOne.head, linkTwo.head);
     }

@@ -288,16 +288,17 @@ public class LinkListImpl {
         }
 
         if(countOne > countTwo) {
-            cursorOne = head;
+            cursorOne = listOne;
+            cursorTwo = listTwo;
             difference = countOne-countTwo;
             while(difference != 0) {
                 difference = difference - 1;
                 cursorOne = cursorOne.getNext();
             }
-            System.out.println("Pre = "+cursorTwo.getData());
             intersectionHelper(cursorOne, cursorTwo);
         } else if(countOne < countTwo){
-            cursorTwo = head;
+            cursorOne = listOne;
+            cursorTwo = listTwo;
             difference = countTwo-countOne;
             while(difference != 0) {
                 difference = difference - 1;
@@ -305,16 +306,17 @@ public class LinkListImpl {
             }
             intersectionHelper(cursorOne, cursorTwo);
         } else {
+            cursorOne = listOne;
+            cursorTwo = listTwo;
             intersectionHelper(cursorOne, cursorTwo);
         }
     }
 
     public void intersectionHelper(Node cursorOne, Node cursorTwo) {
-        System.out.println("ok  = "+cursorOne.getData());
-        System.out.println("ok ok = "+cursorTwo.getData());
         while (cursorOne != null) {
             if(cursorOne == cursorTwo) {
                 System.out.println("The point of intersection is = "+cursorOne.getData());
+                break;
             }
             cursorOne = cursorOne.getNext();
             cursorTwo = cursorTwo.getNext();
