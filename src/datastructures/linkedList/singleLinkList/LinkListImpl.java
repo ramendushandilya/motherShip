@@ -322,4 +322,15 @@ public class LinkListImpl {
             cursorTwo = cursorTwo.getNext();
         }
     }
+
+    /**
+     * Print the link list in reverse using recursion
+     * @param iterator
+     */
+    public void printRev(Node iterator) {
+        if(iterator != null) {
+            printRev(iterator.getNext());
+            System.out.print(iterator.getData()+" - ");
+        }
+    }
 }
