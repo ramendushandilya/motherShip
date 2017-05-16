@@ -439,4 +439,29 @@ public class LinkListImpl {
             roam = roam.getNext();
         }
     }
+
+    /**
+     * Split a link list in alternating fashion
+     */
+    public void alternatingSplit() {
+        LinkListImpl listOne = new LinkListImpl();
+        LinkListImpl listTwo = new LinkListImpl();
+        int flag = 0;
+        Node cur = head;
+        while(cur != null) {
+            if(flag == 0) {
+                listOne.insertNodeAtBeginning(cur.getData());
+                flag = 1;
+                cur = cur.getNext();
+            } else {
+                listTwo.insertNodeAtBeginning(cur.getData());
+                flag = 0;
+                cur = cur.getNext();
+            }
+        }
+        System.out.println("List one");
+        showList(reverseList(listOne.head));
+        System.out.println("List two");
+        showList(reverseList(listTwo.head));
+    }
 }

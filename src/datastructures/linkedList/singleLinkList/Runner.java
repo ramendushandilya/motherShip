@@ -12,10 +12,9 @@ public class Runner {
         linkOne.insertNodeAtBeginning(42);
         linkOne.insertNodeAtBeginning(32);
         linkOne.insertNodeAtBeginning(22);
-        //linkOne.insertNodeAtBeginning(12);
+        linkOne.insertNodeAtBeginning(12);
         linkOne.showList(linkOne.head);
-        linkOne.deleteAlternateNodes();
-        linkOne.showList(linkOne.head);
+        linkOne.alternatingSplit();
 
         /*LinkListImpl linkTwo = new LinkListImpl();
         linkTwo.insertNodeAtBeginning(60);
