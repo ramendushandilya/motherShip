@@ -30,8 +30,8 @@ package datastructures.linkedList.doubleLinkList;
  */
 public class AppRunner {
     /**
-     * TODO Reverse a double link list
-     * 
+     * Reverse a double link list
+     * Delete a node in link list
      */
 
 }

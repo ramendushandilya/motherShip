@@ -1,7 +1,5 @@
 package datastructures.linkedList.singleLinkList;
 
-import java.net.Inet4Address;
-import java.util.Hashtable;
 
 /**
  * @author rams0516
@@ -30,7 +28,7 @@ public class LinkListImpl {
     /**
      * show the contents of the list
      */
-    public void showList() {
+    public void showList(Node head) {
         Node cursor = head;
         while (cursor != null) {
             System.out.print(cursor.getData() + "->>");
@@ -83,7 +81,7 @@ public class LinkListImpl {
             reference.setData(reference.getNext().getData());
             reference.setNext(reference.getNext().getNext());
         }
-        showList();
+        showList(head);
     }
 
     /**
@@ -383,5 +381,51 @@ public class LinkListImpl {
         head = curr;
     }
 
+    /**
+     * Pairwise swap of elements in linked list
+     */
+    public void pairWiseSwap() {
+        Node curr = head;
+        while(curr != null && curr.getNext() != null) {
+            int temp = curr.getData();
+            curr.setData(curr.getNext().getData());
+            curr.getNext().setData(temp);
+            curr = curr.getNext().getNext();
+        }
+    }
 
+    /**
+     * Return the intersection of two sorted linked lists
+     * @param listOne
+     * @param listTwo
+     * @return
+     */
+    public Node intersectionSortedLinkedLists(Node listOne, Node listTwo) {
+        Node head = null;
+        Node guard = null;
+        Node tether = null;
+        Node currOne = listOne;
+        Node currTwo = listTwo;
+
+        while(currOne != null && currTwo != null) {
+            if(currOne.getData() == currTwo.getData()) {
+                guard = new Node(currOne.getData());
+                if(head == null) {
+                    head = guard;
+                    tether = head;
+                } else {
+                    tether.setNext(guard);
+                    tether = tether.getNext();
+                }
+                currOne = currOne.getNext();
+                currTwo = currTwo.getNext();
+            } else if(currOne.getData() < currTwo.getData()) {
+                currOne = currOne.getNext();
+            } else {
+                currTwo = currTwo.getNext();
+            }
+        }
+        guard.setNext(null);
+        return head;
+    }
 }
