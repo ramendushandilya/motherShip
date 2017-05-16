@@ -12,7 +12,10 @@ public class Runner {
         linkOne.insertNodeAtBeginning(42);
         linkOne.insertNodeAtBeginning(32);
         linkOne.insertNodeAtBeginning(22);
-        linkOne.insertNodeAtBeginning(12);
+        //linkOne.insertNodeAtBeginning(12);
+        linkOne.showList(linkOne.head);
+        linkOne.deleteAlternateNodes();
+        linkOne.showList(linkOne.head);
 
         /*LinkListImpl linkTwo = new LinkListImpl();
         linkTwo.insertNodeAtBeginning(60);
@@ -23,7 +26,7 @@ public class Runner {
         linkTwo.insertNodeAtBeginning(11);
         linkTwo.insertNodeAtBeginning(11);*/
 
-        LinkListImpl linkOn = new LinkListImpl();
+        /*LinkListImpl linkOn = new LinkListImpl();
 
         linkOn.insertNodeAtBeginning(6);
         linkOn.insertNodeAtBeginning(4);
@@ -39,6 +42,6 @@ public class Runner {
         linkO.insertNodeAtBeginning(2);
 
         Node node = linkO.intersectionSortedLinkedLists(linkO.head, linkOn.head);
-        linkOn.showList(node);
+        linkOn.showList(node);*/
     }
 }

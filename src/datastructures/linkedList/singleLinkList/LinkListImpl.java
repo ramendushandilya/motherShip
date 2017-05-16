@@ -428,4 +428,15 @@ public class LinkListImpl {
         guard.setNext(null);
         return head;
     }
+
+    /**
+     * Delete alternate nodes in a linked list
+     */
+    public void deleteAlternateNodes() {
+        Node roam = head;
+        while(roam != null && roam.getNext() != null) {
+            roam.setNext(roam.getNext().getNext());
+            roam = roam.getNext();
+        }
+    }
 }
