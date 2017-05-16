@@ -13,7 +13,9 @@ public class Runner {
         linkOne.insertNodeAtBeginning(32);
         linkOne.insertNodeAtBeginning(22);
         linkOne.insertNodeAtBeginning(12);
-
+        linkOne.showList();
+        linkOne.moveLastNodeToFirst();
+        linkOne.showList();
         LinkListImpl linkTwo = new LinkListImpl();
         linkTwo.insertNodeAtBeginning(60);
         linkTwo.insertNodeAtBeginning(43);

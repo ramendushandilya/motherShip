@@ -1,5 +1,8 @@
 package datastructures.linkedList.singleLinkList;
 
+import java.net.Inet4Address;
+import java.util.Hashtable;
+
 /**
  * @author rams0516
  *         Date: 5/3/2017
@@ -347,4 +350,38 @@ public class LinkListImpl {
             }
         }
     }
+
+    /**
+     * Remove duplicate elements in a array which is not sorted
+     */
+    public void removeDupUnsorted() {
+       //TODO
+    }
+
+    /**
+     * Split a circular link list into two halves
+     */
+    public void splitCircularList() {
+        //TODO Find the mid node of the list and make loops using appropriate node references, easy
+    }
+
+    /**
+     * Move the last node of link list to the first position
+     */
+    public void moveLastNodeToFirst() {
+        if(head == null || head.getNext() == null) {
+            return;
+        }
+        Node curr = head;
+        Node prev = head;
+        while(curr.getNext() != null) {
+            prev = curr;
+            curr = curr.getNext();
+        }
+        prev.setNext(null);
+        curr.setNext(head);
+        head = curr;
+    }
+
+
 }
