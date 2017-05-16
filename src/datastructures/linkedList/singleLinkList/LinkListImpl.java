@@ -464,4 +464,15 @@ public class LinkListImpl {
         System.out.println("List two");
         showList(reverseList(listTwo.head));
     }
+
+    /**
+     * Merge two sorted lists into one
+     * @param listOne
+     * @param listTwo
+     * @return
+     */
+    public Node mergeSortedLists(Node listOne, Node listTwo) {
+        //TODO
+        return null;
+    }
 }
