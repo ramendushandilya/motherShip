@@ -505,4 +505,19 @@ public class LinkListImpl {
             System.out.println("Lists are not identical");
         }
     }
+
+    /**
+     * Sort a link list using merge sort
+     */
+    public void mergeSortLinkList() {
+        //TODO
+    }
+
+    /**
+     * Reverse a link list in given size of buckets
+     */
+    public void reverseBucket(int bucketSize) {
+        Node next = head;
+
+    }
 }
