@@ -473,6 +473,36 @@ public class LinkListImpl {
      */
     public Node mergeSortedLists(Node listOne, Node listTwo) {
         //TODO
-        return null;
+       return null;
+    }
+
+    /**
+     * Check if two link lists are identical or not
+     * @param listOne
+     * @param listTwo
+     */
+    public void isIdentical(Node listOne, Node listTwo) {
+        int flag = 0;
+        while(listOne != null && listTwo != null) {
+            if(listOne.getData() != listTwo.getData()) {
+                flag = 1;
+                break;
+            }
+            listOne = listOne.getNext();
+            listTwo = listTwo.getNext();
+            if(listOne == null) {
+                flag = 1;
+                break;
+            }
+            if(listTwo == null) {
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 0) {
+            System.out.println("Lists are identical");
+        } else {
+            System.out.println("Lists are not identical");
+        }
     }
 }

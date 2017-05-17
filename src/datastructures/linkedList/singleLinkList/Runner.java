@@ -8,39 +8,19 @@ package datastructures.linkedList.singleLinkList;
 public class Runner {
     public static void main(String[] args) {
         LinkListImpl linkOne = new LinkListImpl();
-        linkOne.insertNodeAtBeginning(52);
-        linkOne.insertNodeAtBeginning(42);
-        linkOne.insertNodeAtBeginning(32);
-        linkOne.insertNodeAtBeginning(22);
-        linkOne.insertNodeAtBeginning(12);
+
+        linkOne.insertNodeAtBeginning(20);
+        linkOne.insertNodeAtBeginning(3);
+        linkOne.insertNodeAtBeginning(2);
         linkOne.showList(linkOne.head);
-        linkOne.alternatingSplit();
 
-        /*LinkListImpl linkTwo = new LinkListImpl();
-        linkTwo.insertNodeAtBeginning(60);
-        linkTwo.insertNodeAtBeginning(43);
-        linkTwo.insertNodeAtBeginning(43);
-        linkTwo.insertNodeAtBeginning(21);
-        linkTwo.insertNodeAtBeginning(11);
-        linkTwo.insertNodeAtBeginning(11);
-        linkTwo.insertNodeAtBeginning(11);*/
+        LinkListImpl linkTwo = new LinkListImpl();
+        linkTwo.insertNodeAtBeginning(22);
+        linkTwo.insertNodeAtBeginning(3);
+        linkTwo.insertNodeAtBeginning(2);
 
-        /*LinkListImpl linkOn = new LinkListImpl();
+        linkTwo.showList(linkTwo.head);
 
-        linkOn.insertNodeAtBeginning(6);
-        linkOn.insertNodeAtBeginning(4);
-        linkOn.insertNodeAtBeginning(3);
-        linkOn.insertNodeAtBeginning(2);
-        linkOn.insertNodeAtBeginning(1);
-
-        LinkListImpl linkO = new LinkListImpl();
-
-        linkO.insertNodeAtBeginning(8);
-        linkO.insertNodeAtBeginning(6);
-        linkO.insertNodeAtBeginning(4);
-        linkO.insertNodeAtBeginning(2);
-
-        Node node = linkO.intersectionSortedLinkedLists(linkO.head, linkOn.head);
-        linkOn.showList(node);*/
+        linkOne.isIdentical(linkOne.head, linkTwo.head);
     }
 }
