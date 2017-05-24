@@ -518,6 +518,39 @@ public class LinkListImpl {
      */
     public void reverseBucket(int bucketSize) {
         Node next = head;
+        //TODO
+    }
 
+    /**
+     * Insert a node into a circular sorted linked list
+     * @param data
+     */
+    public void insertSortedCircular(int data) {
+        Node previous = head;
+        Node next = head.getNext();
+        boolean flag = false;
+        if(head == null)
+            head = new Node(data);
+        if(data < head.getData()) {
+            head = new Node(data);
+            head.setNext(previous);
+            return;
+        }
+        while(next.getNext() != head) {
+            if(next.getData() > data) {
+                Node temp = new Node(data);
+                previous.setNext(temp);
+                temp.setNext(next);
+                flag = true;
+                break;
+            }
+            previous = next;
+            next = next.getNext();
+        }
+        if(flag == false) {
+            Node temp = new Node(data);
+            previous.setNext(temp);
+            temp.setNext(head);
+        }
     }
 }
