@@ -16,6 +16,6 @@ public class Runner {
         tree.insert(17);
         tree.insert(19);
 
-        tree.inOrder(tree.root);
+        System.out.print(tree.count(tree.root));
     }
 }

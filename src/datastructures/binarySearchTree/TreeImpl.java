@@ -37,4 +37,11 @@ public class TreeImpl {
             inOrder(root.getRightChild());
         }
     }
+
+    public int count(Node root) {
+        if(root == null) return 0;
+        return count(root.getLeftChild()) + count(root.getRightChild()) + 1;
+    }
+
+
 }
