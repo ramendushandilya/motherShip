@@ -17,6 +17,12 @@ public class TreeImpl {
         root = insert(root, data);
     }
 
+    /**
+     * Insert into binary search tree
+     * @param node
+     * @param data
+     * @return
+     */
     private Node insert(Node node, int data) {
         if(node== null) {
             node = new Node(data);
@@ -30,6 +36,7 @@ public class TreeImpl {
         return node;
     }
 
+
     public void inOrder(Node root) {
         if(root != null) {
             inOrder(root.getLeftChild());
@@ -38,9 +45,61 @@ public class TreeImpl {
         }
     }
 
+    /**
+     * Count the number of nodes in the tree
+     * @param root
+     * @return
+     */
     public int count(Node root) {
         if(root == null) return 0;
         return count(root.getLeftChild()) + count(root.getRightChild()) + 1;
+    }
+
+    /**
+     * Check if two trees are identical or not
+     * @param rootOne
+     * @param rootTwo
+     * @return
+     */
+    public boolean areIdentical(Node rootOne, Node rootTwo) {
+        if(rootOne == null && rootTwo == null) return true;
+
+        if(rootOne != null && rootTwo != null) {
+            return (rootOne.getData() == rootTwo.getData() &&
+            areIdentical(rootOne.getLeftChild(), rootTwo.getLeftChild()) &&
+            areIdentical(rootOne.getRightChild(), rootTwo.getRightChild()));
+        }
+        return false;
+    }
+
+    /**
+     * Find depth/height of the tree
+     * @param root
+     * @return
+     */
+    public int findHeight(Node root) {
+        if(root == null) return 0;
+        int left = findHeight(root.getLeftChild());
+        int right = findHeight(root.getRightChild());
+        if(left > right) {
+            return left + 1;
+        } else {
+            return right + 1;
+        }
+    }
+
+    /**
+     * Delete tree using post order, because before deleting parent we need to delete the children
+     * @param root
+     */
+    public void deleteTree(Node root) {
+        if(root == null) return;
+
+        deleteTree(root.getLeftChild());
+        deleteTree(root.getRightChild());
+
+        System.out.print("Delete node is = "+root.getData());
+        root = null;
     }
 
 
