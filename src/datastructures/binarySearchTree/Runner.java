@@ -28,6 +28,7 @@ public class Runner {
         treeo.insert(17);
         treeo.insert(0);
 
-        treeo.deleteTree(treeo.root);
+        tree.inOrder(tree.mirrorTree(tree.root));
+
     }
 }

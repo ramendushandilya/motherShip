@@ -102,5 +102,20 @@ public class TreeImpl {
         root = null;
     }
 
+    /**
+     * Make a mirror of the tree
+     * @param root
+     */
+    public Node mirrorTree(Node root) {
+        if(root == null) return root;
+
+        Node left = mirrorTree(root.getLeftChild());
+        Node right = mirrorTree(root.getRightChild());
+
+        root.setLeftChild(right);
+        root.setRightChild(left);
+
+        return root;
+    }
 
 }
