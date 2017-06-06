@@ -118,4 +118,10 @@ public class TreeImpl {
         return root;
     }
 
+    /**
+     * Given two tree traversals can a binary tree be reconstructed
+     * Look here http://www.geeksforgeeks.org/if-you-are-given-two-traversal-sequences-can-you-construct-the-binary-tree/
+     */
+
+
 }
