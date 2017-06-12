@@ -1,5 +1,7 @@
 package datastructures.binarySearchTree;
 
+import java.util.ArrayList;
+
 /**
  * @author rams0516
  *         Date: 5/24/2017
@@ -123,5 +125,27 @@ public class TreeImpl {
      * Look here http://www.geeksforgeeks.org/if-you-are-given-two-traversal-sequences-can-you-construct-the-binary-tree/
      */
 
+    /**
+     * Print all the root to leaf paths in each line
+     * @param root
+     */
+    public void rootToLeaf(Node root, int[] path, int len) {
+        if(root == null) return;
+        path[len] = root.getData();
+        len++;
 
+        if(root.getLeftChild() == null && root.getRightChild() == null) {
+            printArray(path, len);
+        } else {
+            rootToLeaf(root.getLeftChild(), path, len);
+            rootToLeaf(root.getRightChild(), path, len);
+        }
+    }
+
+    public void printArray(int[] arr, int len) {
+        for(int i = 0 ; i < len ; i++) {
+            System.out.print(arr[i]+"->");
+        }
+        System.out.println();
+    }
 }
