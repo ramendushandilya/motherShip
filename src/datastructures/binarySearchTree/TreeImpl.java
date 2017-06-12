@@ -148,4 +148,45 @@ public class TreeImpl {
         }
         System.out.println();
     }
+
+    /**
+     * Find the lowest common ancestor by recursive method
+     * @param root
+     * @param a
+     * @param b
+     * @return
+     */
+    public Node recLca(Node root, int a, int b) {
+        if(root == null) return null;
+
+        if(root.getData() < a && root.getData() < b) {
+            return recLca(root.getRightChild(), a, b);
+        }
+        if(root.getData() > a && root.getData() > b) {
+            return recLca(root.getLeftChild(), a, b);
+        }
+        return root;
+    }
+
+    /**
+     * Find the lowest common ancestor by iterative method
+     * @param root
+     * @param a
+     * @param b
+     * @return
+     */
+    public Node itrLca(Node root, int a, int b) {
+        while(root != null) {
+            if(root.getData() < a && root.getData() < b) {
+                root = root.getRightChild();
+            } else if(root.getData() > a && root.getData() > b) {
+                root = root.getLeftChild();
+            } else {
+                break;
+            }
+        }
+        return root;
+    }
+
+
 }

@@ -18,8 +18,6 @@ public class Runner {
         tree.insert(18);
         tree.insert(17);
         tree.insert(19);
-        tree.insert(20);
-        tree.insert(1);
 
         TreeImpl treeo = new TreeImpl();
         treeo.insert(16);
@@ -30,8 +28,6 @@ public class Runner {
         treeo.insert(17);
         treeo.insert(0);
 
-        int[] paths = new int[1000];
-        tree.rootToLeaf(tree.root, paths, 0);
-
+        System.out.print(tree.itrLca(tree.root, 7, 14).getData());
     }
 }
