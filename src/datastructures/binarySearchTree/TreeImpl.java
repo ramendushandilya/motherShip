@@ -211,4 +211,14 @@ public class TreeImpl {
                 queue.add(tempNode.getRightChild());
         }
     }
+
+    public int countLeaves(Node root) {
+        if(root == null) {
+            return 0;
+        }else if(root.getLeftChild() == null && root.getRightChild() == null) {
+                return 1;
+        }else {
+            return countLeaves(root.getLeftChild()) + countLeaves(root.getRightChild());
+        }
+    }
 }
