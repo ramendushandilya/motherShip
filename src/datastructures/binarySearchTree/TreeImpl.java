@@ -1,6 +1,8 @@
 package datastructures.binarySearchTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author rams0516
@@ -188,5 +190,25 @@ public class TreeImpl {
         return root;
     }
 
+    /**
+     * Method to convert tree to doubly linked list
+     */
 
+    /**
+     * Do the level order traversal of tree
+     * @param root
+     */
+    public void levelOrder(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            Node tempNode = queue.poll();
+            System.out.print(tempNode.getData()+"->");
+            if(tempNode.getLeftChild() != null)
+                queue.add(tempNode.getLeftChild());
+            if(tempNode.getRightChild() != null)
+                queue.add(tempNode.getRightChild());
+        }
+    }
 }
