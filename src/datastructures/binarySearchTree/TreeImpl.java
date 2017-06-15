@@ -1,8 +1,6 @@
 package datastructures.binarySearchTree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author rams0516
@@ -212,6 +210,11 @@ public class TreeImpl {
         }
     }
 
+    /**
+     * Count the number of leaves in a binary tree
+     * @param root
+     * @return
+     */
     public int countLeaves(Node root) {
         if(root == null) {
             return 0;
@@ -220,5 +223,37 @@ public class TreeImpl {
         }else {
             return countLeaves(root.getLeftChild()) + countLeaves(root.getRightChild());
         }
+    }
+
+    /**
+     * Print a tree level order in spiral form
+     * @param root
+     */
+    public void spiralLevelOrder(Node root) {
+        //TODO
+    }
+
+    /**
+     * Find if the value of each node equals to the left and right child nodes
+     * @param root
+     * @return
+     */
+    public boolean childrenSumProperty(Node root) {
+        int leftData = 0;
+        int rightData = 0;
+        if(root == null ||
+                root.getLeftChild() != null &&
+                root.getRightChild() != null) {
+            return true;
+        }
+        if(root.getLeftChild() != null) {
+            leftData = root.getLeftChild().getData();
+        }
+        if(root.getRightChild() != null) {
+            rightData = root.getRightChild().getData();
+        }
+        return ((root.getData() == leftData + rightData) &&
+                childrenSumProperty(root.getLeftChild()) &&
+                childrenSumProperty(root.getRightChild()));
     }
 }
