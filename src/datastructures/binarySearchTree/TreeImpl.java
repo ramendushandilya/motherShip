@@ -256,4 +256,16 @@ public class TreeImpl {
                 childrenSumProperty(root.getLeftChild()) &&
                 childrenSumProperty(root.getRightChild()));
     }
+
+    /**
+     * Convert a tree to a tree which holds the children sum property
+     * constraint : The node value could only be increased
+     * @param root
+     */
+    public void convertToCsp(Node root) {
+        //TODO
+    }
+
+
+
 }
