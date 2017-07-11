@@ -48,4 +48,18 @@ public class StackImpl {
            System.out.println("Not Balanced");
         }
      }
+
+    /**
+     * Find the next greater element in an array, if no such element print -1
+     * @param array
+     */
+    public void nextGreaterElement(int[] array) {
+
+    }
+
+    /**
+     * Spaghetti stack
+     */
+
+
 }
