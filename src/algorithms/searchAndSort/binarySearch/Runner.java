@@ -34,6 +34,7 @@ public class Runner {
      * @param a
      * @param find
      * @return
+     * Rev count 1
      */
     static int binarySearchIterative(int[] a, int find) {
         int left = 0;
