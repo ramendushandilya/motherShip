@@ -111,7 +111,7 @@ public class Runner {
      */
     static int findMinimum(int[] a, int low, int high) {
         /**
-         *
+         * Handles the case when array is not rotated at all
          */
         if(high < low) {
             return a[0];
