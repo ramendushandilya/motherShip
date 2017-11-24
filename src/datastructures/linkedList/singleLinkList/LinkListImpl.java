@@ -109,11 +109,19 @@ public class LinkListImpl {
         Node slowRef = head;
         Node fastRef = head;
 
-        while(true) {
+        //One way to find middle
+        /*while(true) {
             slowRef = slowRef.getNext();
             fastRef = fastRef.getNext().getNext();
             if(fastRef == null) break;
             if(fastRef.getNext() == null) break;
+        }*/
+
+        //Another way to find the middle, if the first equality in while loop fails with logical and condition,
+        //the entire loop equates to false and hence the loop stops
+        while(fastRef != null && fastRef.getNext() != null) {
+            slowRef = slowRef.getNext();
+            fastRef = fastRef.getNext().getNext();
         }
         return slowRef.getData();
     }
