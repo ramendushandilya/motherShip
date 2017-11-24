@@ -43,7 +43,8 @@ public class LinkListImpl {
      * @return
      */
     public int getN(int n) {
-        if (n < 1) {
+        //One way to find
+        /*if (n < 1) {
             System.out.println("Enter 1 based index");
             return -1;
         } else {
@@ -54,7 +55,17 @@ public class LinkListImpl {
                 pos++;
             }
             return cursor.getData();
+        }*/
+
+        //Another way to find
+        /*Node cr = head;
+        int count = 1;
+        while(n> count) {
+            cr = cr.getNext();
+            count++;
         }
+        return cr.getData();*/
+        return 0;
     }
 
     /**

@@ -157,7 +157,7 @@ public class Runner {
     }
 
     /**
-     * Find the peak element in an array
+     * Find the peak element in an array, http://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
      * Runs in O(log n)
      * @param a
      * @param low

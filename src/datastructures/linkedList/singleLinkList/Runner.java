@@ -13,8 +13,7 @@ public class Runner {
         linkOne.insertNodeAtBeginning(8);
         linkOne.insertNodeAtBeginning(5);
         linkOne.insertNodeAtBeginning(2);
-        linkOne.head.getNext().getNext().getNext().setNext(linkOne.head);
         //linkOne.showList(linkOne.head);
-        linkOne.insertSortedCircular(1);
+        System.out.print(linkOne.getN(3));
     }
 }
