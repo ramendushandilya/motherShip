@@ -202,11 +202,13 @@ public class LinkListImpl {
      * @return
      */
     public boolean isPalindrome() {
+        //Pivot is the element just before the middle element of the list
         Node pivot = null;
         Node first = head;
         Node second = head;
         int flag = 0;
 
+        //Find the middle element
         while(second != null && second.getNext() != null) {
             first = first.getNext();
             second = second.getNext().getNext();
@@ -216,6 +218,7 @@ public class LinkListImpl {
                 flag = 1; // Even number of nodes contained
             }
         }
+        //In case of even number of nodes, revere the list after pivot and match element by element
         if(flag == 1) {
             pivot.setNext(reverseList(pivot.getNext()));
             first = head;
@@ -230,6 +233,7 @@ public class LinkListImpl {
                 second = second.getNext();
             }
             return true;
+            //In case of odd number of nodes, reverse list after pivot's next and do the matching one by one
         } else {
             pivot.getNext().setNext(reverseList(pivot.getNext().getNext()));
             first = head;
