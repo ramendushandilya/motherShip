@@ -75,7 +75,7 @@ public class LinkListImpl {
     public Node getReference() {
         int count = 0;
         Node ref = head;
-        while(count != 2) {
+        while(count != 3) {
             count++;
             ref = ref.getNext();
         }
@@ -84,13 +84,19 @@ public class LinkListImpl {
 
     /**
      * Remove a node from the link list to which a reference is provided, there is no reference to the head node
+     * If the node reference is to the last node, it can't be deleted so that's made as -1 to be marked as dummy node
      */
     public void removeByReference() {
         Node reference = getReference();
         if(reference != null) {
             System.out.println("Removal of the node with data = "+reference.getData()+" initiated");
-            reference.setData(reference.getNext().getData());
-            reference.setNext(reference.getNext().getNext());
+            Node next = reference.getNext();
+            if(next != null) {
+                reference.setData(next.getData());
+                reference.setNext(next.getNext());
+            } else if(next == null){
+                reference.setData(-1);
+            }
         }
         showList(head);
     }
