@@ -181,7 +181,7 @@ public class LinkListImpl {
         Node slow = head;
         Node fast = head;
         boolean flag = false;
-
+        //Null check is mandatory to invalidate the loop condition in case there is no loop in the list
         while(fast != null && fast.getNext() != null) {
             slow = slow.getNext();
             fast = fast.getNext().getNext();
