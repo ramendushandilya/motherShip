@@ -13,7 +13,18 @@ public class Runner {
         linkOne.insertNodeAtBeginning(8);
         linkOne.insertNodeAtBeginning(5);
         linkOne.insertNodeAtBeginning(2);
-        //linkOne.showList(linkOne.head);
-        System.out.print(linkOne.getN(3));
+        linkOne.showList(linkOne.head);
+        System.out.print("Place holder for function call");
+
+        LinkListImpl lt = new LinkListImpl();
+        lt.insertNodeAtBeginning(21);
+        lt.insertNodeAtBeginning(43);
+        lt.insertNodeAtBeginning(41);
+        lt.insertNodeAtBeginning(21);
+        lt.insertNodeAtBeginning(12);
+        lt.insertNodeAtBeginning(11);
+        lt.insertNodeAtBeginning(12);
+        lt.removeDupUnsorted();
+        lt.showList(lt.head);
     }
 }

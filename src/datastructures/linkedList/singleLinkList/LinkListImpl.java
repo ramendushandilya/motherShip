@@ -1,6 +1,9 @@
 package datastructures.linkedList.singleLinkList;
 
 
+import java.io.PrintWriter;
+import java.util.HashSet;
+
 /**
  * @author rams0516
  *         Date: 5/3/2017
@@ -382,7 +385,20 @@ public class LinkListImpl {
      * Remove duplicate elements in a array which is not sorted
      */
     public void removeDupUnsorted() {
-       //TODO
+        Node current = head;
+        Node prev = null;
+
+        HashSet<Integer> hs = new HashSet<>();
+        while(current != null) {
+            int currVal = current.getData();
+            if(hs.contains(currVal)) {
+                prev.setNext(current.getNext());
+            } else {
+                hs.add(currVal);
+                prev = current;
+            }
+            current = current.getNext();
+        }
     }
 
     /**
