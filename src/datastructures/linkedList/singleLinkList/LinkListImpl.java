@@ -428,6 +428,7 @@ public class LinkListImpl {
 
     /**
      * Pairwise swap of elements in linked list
+     * Start from head node and while traversing the nodes keep on swapping the data values
      */
     public void pairWiseSwap() {
         Node curr = head;
@@ -454,7 +455,11 @@ public class LinkListImpl {
 
         while(currOne != null && currTwo != null) {
             if(currOne.getData() == currTwo.getData()) {
+                //If node values are same, create a new node to guard to be added to the curated list
+                //Other else conditions advance the references
                 guard = new Node(currOne.getData());
+
+                //If the list being curated is empty
                 if(head == null) {
                     head = guard;
                     tether = head;
