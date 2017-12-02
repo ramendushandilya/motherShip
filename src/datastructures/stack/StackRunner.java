@@ -8,7 +8,8 @@ package datastructures.stack;
 public class StackRunner {
     public static void main(String[] arg) {
         StackImpl stack = new StackImpl();
-        stack.checkParantheses("[()]{}{[()()]()}");
+        int a = 5/2;
+        System.out.print(a);
 
     }
 }

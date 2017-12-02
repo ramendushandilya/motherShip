@@ -1,6 +1,9 @@
 package datastructures.linkedList.singleLinkList;
 
 
+import java.io.PrintWriter;
+import java.util.HashSet;
+
 /**
  * @author rams0516
  *         Date: 5/3/2017
@@ -43,7 +46,8 @@ public class LinkListImpl {
      * @return
      */
     public int getN(int n) {
-        if (n < 1) {
+        //One way to find
+        /*if (n < 1) {
             System.out.println("Enter 1 based index");
             return -1;
         } else {
@@ -54,7 +58,17 @@ public class LinkListImpl {
                 pos++;
             }
             return cursor.getData();
+        }*/
+
+        //Another way to find
+        /*Node cr = head;
+        int count = 1;
+        while(n> count) {
+            cr = cr.getNext();
+            count++;
         }
+        return cr.getData();*/
+        return 0;
     }
 
     /**
@@ -64,7 +78,7 @@ public class LinkListImpl {
     public Node getReference() {
         int count = 0;
         Node ref = head;
-        while(count != 2) {
+        while(count != 3) {
             count++;
             ref = ref.getNext();
         }
@@ -73,13 +87,19 @@ public class LinkListImpl {
 
     /**
      * Remove a node from the link list to which a reference is provided, there is no reference to the head node
+     * If the node reference is to the last node, it can't be deleted so that's made as -1 to be marked as dummy node
      */
     public void removeByReference() {
         Node reference = getReference();
         if(reference != null) {
             System.out.println("Removal of the node with data = "+reference.getData()+" initiated");
-            reference.setData(reference.getNext().getData());
-            reference.setNext(reference.getNext().getNext());
+            Node next = reference.getNext();
+            if(next != null) {
+                reference.setData(next.getData());
+                reference.setNext(next.getNext());
+            } else if(next == null){
+                reference.setData(-1);
+            }
         }
         showList(head);
     }
@@ -92,11 +112,19 @@ public class LinkListImpl {
         Node slowRef = head;
         Node fastRef = head;
 
-        while(true) {
+        //One way to find middle
+        /*while(true) {
             slowRef = slowRef.getNext();
             fastRef = fastRef.getNext().getNext();
             if(fastRef == null) break;
             if(fastRef.getNext() == null) break;
+        }*/
+
+        //Another way to find the middle, if the first equality in while loop fails with logical and condition,
+        //the entire loop equates to false and hence the loop stops
+        while(fastRef != null && fastRef.getNext() != null) {
+            slowRef = slowRef.getNext();
+            fastRef = fastRef.getNext().getNext();
         }
         return slowRef.getData();
     }
@@ -156,7 +184,7 @@ public class LinkListImpl {
         Node slow = head;
         Node fast = head;
         boolean flag = false;
-
+        //Null check is mandatory to invalidate the loop condition in case there is no loop in the list
         while(fast != null && fast.getNext() != null) {
             slow = slow.getNext();
             fast = fast.getNext().getNext();
@@ -177,11 +205,13 @@ public class LinkListImpl {
      * @return
      */
     public boolean isPalindrome() {
+        //Pivot is the element just before the middle element of the list
         Node pivot = null;
         Node first = head;
         Node second = head;
         int flag = 0;
 
+        //Find the middle element
         while(second != null && second.getNext() != null) {
             first = first.getNext();
             second = second.getNext().getNext();
@@ -191,6 +221,7 @@ public class LinkListImpl {
                 flag = 1; // Even number of nodes contained
             }
         }
+        //In case of even number of nodes, revere the list after pivot and match element by element
         if(flag == 1) {
             pivot.setNext(reverseList(pivot.getNext()));
             first = head;
@@ -205,6 +236,7 @@ public class LinkListImpl {
                 second = second.getNext();
             }
             return true;
+            //In case of odd number of nodes, reverse list after pivot's next and do the matching one by one
         } else {
             pivot.getNext().setNext(reverseList(pivot.getNext().getNext()));
             first = head;
@@ -353,7 +385,20 @@ public class LinkListImpl {
      * Remove duplicate elements in a array which is not sorted
      */
     public void removeDupUnsorted() {
-       //TODO
+        Node current = head;
+        Node prev = null;
+
+        HashSet<Integer> hs = new HashSet<>();
+        while(current != null) {
+            int currVal = current.getData();
+            if(hs.contains(currVal)) {
+                prev.setNext(current.getNext());
+            } else {
+                hs.add(currVal);
+                prev = current;
+            }
+            current = current.getNext();
+        }
     }
 
     /**
@@ -383,6 +428,7 @@ public class LinkListImpl {
 
     /**
      * Pairwise swap of elements in linked list
+     * Start from head node and while traversing the nodes keep on swapping the data values
      */
     public void pairWiseSwap() {
         Node curr = head;
@@ -409,7 +455,11 @@ public class LinkListImpl {
 
         while(currOne != null && currTwo != null) {
             if(currOne.getData() == currTwo.getData()) {
+                //If node values are same, create a new node to guard to be added to the curated list
+                //Other else conditions advance the references
                 guard = new Node(currOne.getData());
+
+                //If the list being curated is empty
                 if(head == null) {
                     head = guard;
                     tether = head;

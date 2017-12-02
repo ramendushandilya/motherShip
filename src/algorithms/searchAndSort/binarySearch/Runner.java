@@ -34,6 +34,7 @@ public class Runner {
      * @param a
      * @param find
      * @return
+     * Rev count 1
      */
     static int binarySearchIterative(int[] a, int find) {
         int left = 0;
@@ -110,7 +111,7 @@ public class Runner {
      */
     static int findMinimum(int[] a, int low, int high) {
         /**
-         *
+         * Handles the case when array is not rotated at all
          */
         if(high < low) {
             return a[0];
@@ -156,7 +157,7 @@ public class Runner {
     }
 
     /**
-     * Find the peak element in an array
+     * Find the peak element in an array, http://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
      * Runs in O(log n)
      * @param a
      * @param low
