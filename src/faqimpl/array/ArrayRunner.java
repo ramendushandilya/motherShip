@@ -8,9 +8,9 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] array = {1,4,3,3,5,2,6};
+        int[] array = {1,2,3,4,4,4,4};
         IArray impl = new ArrayImpl();
-        impl.findPairSum(array, 9);
+        impl.findMajLinear(array);
     }
 
 }
