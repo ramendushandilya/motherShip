@@ -24,7 +24,7 @@ public class ArrayImpl implements IArray{
         }
     }
 
-    //O(n) time complexity and O(1) space complexity
+    //O(n) time complexity and O(1) space complexity, works only on sorted array input
     @Override
     public void findMajLinear(int[] array) {
         int middle = array.length/2;
@@ -40,5 +40,38 @@ public class ArrayImpl implements IArray{
         }
     }
 
+    //O(n) time complexity, O(1) space complexity, works on non sorted array inputs as well
+    @Override
+    public void findMajMoore(int[] array) {
+        //Find the candidate by voting
+        int vote = 1;
+        int majIndex = 0;
+        int candidate = 0;
+        int occurance = 0;
 
+        for(int i = 1; i < array.length; i++) {
+            if(array[majIndex] == array[i]) {
+                vote++;
+            } else {
+                vote--;
+            }
+            if(vote == 0) {
+                majIndex = i;
+                vote = 1;
+            }
+        }
+
+        //Authenticate the claim of the majority by votes
+        candidate = array[majIndex];
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] == candidate) {
+                occurance++;
+            }
+        }
+        if(occurance > array.length/2) {
+            System.out.println("Majority element is = "+candidate);
+        } else {
+            System.out.println("No majority element present in the given array");
+        }
+    }
 }

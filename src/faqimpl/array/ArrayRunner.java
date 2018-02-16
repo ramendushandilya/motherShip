@@ -8,9 +8,9 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] array = {1,2,3,4,4,4,4};
+        int[] array = {2,2,5,6,2,2,7};
         IArray impl = new ArrayImpl();
-        impl.findMajLinear(array);
+        impl.findMajMoore(array);
     }
 
 }
