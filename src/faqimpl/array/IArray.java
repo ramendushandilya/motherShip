@@ -1,4 +1,4 @@
-package faqimpl;
+package faqimpl.array;
 
 /**
  * @author rams0516
