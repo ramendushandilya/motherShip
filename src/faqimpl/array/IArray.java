@@ -5,6 +5,8 @@ package faqimpl.array;
  *         Date: 2/16/2018
  *         Time: 4:13 PM
  *         Find the pair of numbers with a given sum
+ *         Find the majority element in array, linear way, moore voting algorithm
+ *         Find max difference in an array, such that the bigger element comes after the smaller element
  */
 public interface IArray {
 
@@ -13,5 +15,9 @@ public interface IArray {
     void findMajLinear(int[] array);
 
     void findMajMoore(int[] array);
+
+    void maxDifferenceInArrayBigLaterOne(int[] array);
+
+    void maxDifferenceInArrayBigLaterTwo(int[] array);
 
 }

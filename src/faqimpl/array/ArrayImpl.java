@@ -74,4 +74,16 @@ public class ArrayImpl implements IArray{
             System.out.println("No majority element present in the given array");
         }
     }
+
+    //Use of difference array in line with O(n) time complexity, O(1) space complexity
+    @Override
+    public void maxDifferenceInArrayBigLaterOne(int[] array) {
+
+    }
+
+    //Use of indexes to calculate min so far and max difference
+    @Override
+    public void maxDifferenceInArrayBigLaterTwo(int[] array) {
+
+    }
 }
