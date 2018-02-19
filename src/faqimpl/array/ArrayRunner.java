@@ -8,9 +8,9 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] array = {2,2,5,6,2,2,7};
+        int[] array = {3,1,4,7,5,100,10};
         IArray impl = new ArrayImpl();
-        impl.findMajMoore(array);
+        impl.maxDifferenceInArrayBigLaterTwo(array);
     }
 
 }

@@ -78,12 +78,45 @@ public class ArrayImpl implements IArray{
     //Use of difference array in line with O(n) time complexity, O(1) space complexity
     @Override
     public void maxDifferenceInArrayBigLaterOne(int[] array) {
+        int[] difference = new int[array.length-1];
 
+        for(int i = 1; i < difference.length; i++) {
+            difference[i] = array[i] - array[i-1];
+        }
+
+        int currentMax = difference[0];
+
+        for(int i = 1 ; i < difference.length ; i++) {
+            if(difference[i-1] > 0) {
+                difference[i] = difference[i] + difference[i-1];
+            }
+            currentMax = Math.max(currentMax, difference[i]);
+        }
+        System.out.println("The max difference such that the larger element comes after the smaller element is "+currentMax);
     }
 
     //Use of indexes to calculate min so far and max difference
     @Override
     public void maxDifferenceInArrayBigLaterTwo(int[] array) {
 
+        int minimumDSoFar = array[0];
+        int maximumSoFar = array[1] - array[0];
+        int runningDifference = array[1] - array[0];
+        int alpha = 0;
+        int beta = 0;
+
+        for(int i = 1 ; i < array.length ; i++) {
+            if(array[i] < minimumDSoFar) {
+                minimumDSoFar = array[i];
+                alpha = minimumDSoFar;
+            } else {
+                runningDifference = array[i] - minimumDSoFar;
+                if(runningDifference > maximumSoFar) {
+                    maximumSoFar = runningDifference;
+                    beta = array[i];
+                }
+            }
+        }
+        System.out.println("The maximum difference is = "+maximumSoFar+" with elements "+alpha+" and "+beta);
     }
 }
