@@ -119,4 +119,74 @@ public class ArrayImpl implements IArray{
         }
         System.out.println("The maximum difference is = "+maximumSoFar+" with elements "+alpha+" and "+beta);
     }
+
+    //O(n) time complexity and O(1) space complexity using bitwise xor operations on elements
+    @Override
+    public void findOddOccuringNumber(int[] array) {
+        int number = array[0];
+        for(int i = 1 ; i < array.length ; i++) {
+            number ^= array[i];
+        }
+        System.out.println("The number occuring odd number of times = "+number);
+    }
+
+    //Use of swapping elements on left and right using two references while traversing the array from both ends
+    //Time complexity O(n), space complexity O(1)
+    @Override
+    public void segregateZeroOne(int[] array) {
+
+        int left = 0;
+        int right = array.length-1;
+
+        while(left < right) {
+            while ((array[left] == 0) && (left < right)) {
+                left++;
+            }
+
+            while ((array[right] == 1) && (left < right)) {
+                right--;
+            }
+
+            if(left < right) {
+                array[left++] = 0;
+                array[right--] = 1;
+            }
+        }
+
+        System.out.println("Elements segregated, printing the end result below");
+        for(int i = 0 ; i < array.length ; i++) {
+            System.out.print(array[i]+"->");
+        }
+    }
+
+    //O(n) time complexity, O(1) space complexity
+    //Implementing the approach for segregating 1 and 0
+    @Override
+    public void segregateOddEven(int[] array) {
+
+        int left = 0;
+        int right = array.length-1;
+
+        while(left < right) {
+            while(array[left] % 2 == 0 && left < right ) {
+                left++;
+            }
+
+            while(array[right] % 2 ==1 & left < right) {
+                right--;
+            }
+
+            if(left < right) {
+                int temp = array[left];
+                array[left] = array[right];
+                array[right] = temp;
+            }
+        }
+
+        System.out.println("Array shuffled, printing the result below...");
+
+        for(int i = 0 ; i < array.length ; i++) {
+            System.out.print(array[i]+"->");
+        }
+    }
 }

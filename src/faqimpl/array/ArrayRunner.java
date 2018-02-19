@@ -8,9 +8,9 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] array = {3,1,4,7,5,100,10};
+        int[] arrayy = {1,2,3,2,3,1,3};
+        int[] array = {1,1,1,1,0,0,0,0,1};
         IArray impl = new ArrayImpl();
-        impl.maxDifferenceInArrayBigLaterTwo(array);
+        impl.segregateOddEven(arrayy);
     }
-
 }
