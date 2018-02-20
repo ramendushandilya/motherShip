@@ -1,7 +1,6 @@
 package faqimpl.array;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,7 +48,7 @@ public class ArrayImpl implements IArray{
         int vote = 1;
         int majIndex = 0;
         int candidate = 0;
-        int occurance = 0;
+        int occurrence = 0;
 
         for(int i = 1; i < array.length; i++) {
             if(array[majIndex] == array[i]) {
@@ -67,10 +66,10 @@ public class ArrayImpl implements IArray{
         candidate = array[majIndex];
         for(int i = 0; i < array.length; i++) {
             if(array[i] == candidate) {
-                occurance++;
+                occurrence++;
             }
         }
-        if(occurance > array.length/2) {
+        if(occurrence > array.length/2) {
             System.out.println("Majority element is = "+candidate);
         } else {
             System.out.println("No majority element present in the given array");
@@ -124,7 +123,7 @@ public class ArrayImpl implements IArray{
 
     //O(n) time complexity and O(1) space complexity using bitwise xor operations on elements
     @Override
-    public void findOddOccuringNumber(int[] array) {
+    public void findOddOccurringNumber(int[] array) {
         int number = array[0];
         for(int i = 1 ; i < array.length ; i++) {
             number ^= array[i];
@@ -196,7 +195,7 @@ public class ArrayImpl implements IArray{
     @Override
     public void findElementsSumCloseZero(int[] array) {
 
-        int sum = 0;
+        int sum;
         int minSum = Integer.MAX_VALUE;
         int left = 0;
         int right = array.length-1;
@@ -222,4 +221,35 @@ public class ArrayImpl implements IArray{
         }
         System.out.println("The elements whose sum is closest to zero is "+ array[minLeft]+" "+array[minRight]);
     }
+
+    //O(n2) time complexity, O(1) space complexity
+    @Override
+    public boolean findTripletSumToANumber(int[] array, int sum) {
+
+        int left;
+        int right;
+        int sumTemp;
+        //Sort the array in increasing fashion
+        Arrays.sort(array);
+
+        for(int i = 0; i < array.length-2; i++) {
+            left = i+1;
+            right = array.length-1;
+
+            while (left < right) {
+                sumTemp = array[i] + array[left] + array[right];
+                if(sumTemp == sum) {
+                    return true;
+                }
+                if(sumTemp < sum) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return false;
+    }
+
+
 }
