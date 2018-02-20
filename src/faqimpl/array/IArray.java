@@ -12,6 +12,7 @@ package faqimpl.array;
  *         Find the two pairs in an array whose sum is closet to zero
  *         Find a triplet in an array with a given sum
  *         Find the equillibrium index in an array
+ *         Given an array with all zeroes in beginning and all ones towards the end, find the index where 1 starts. Size of array is not known
  */
 public interface IArray {
 
@@ -36,5 +37,7 @@ public interface IArray {
     boolean findTripletSumToANumber(int[] array, int sum);
 
     void findEqIndex(int[] array);
+
+    void findFirstOne(int[] array);
 
 }

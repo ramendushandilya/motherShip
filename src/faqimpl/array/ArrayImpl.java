@@ -285,4 +285,17 @@ public class ArrayImpl implements IArray{
             System.out.println("Equilibrium index not present in the array!");
         }
     }
+
+    @Override
+    public void findFirstOne(int[] array) {
+
+        /**
+         * Increment the array index in multiples of x, when the first one is met, apply binary search in that bound to
+         * find the first occurrence of one. Since, the size of the input is unknown nothing can be said in terms of
+         * input size about the time complexity of the algorithm.
+         */
+
+    }
+
+
 }
