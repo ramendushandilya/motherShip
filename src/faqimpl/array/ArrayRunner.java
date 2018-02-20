@@ -8,13 +8,10 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] arrayy  = {1,60,-10,70,-80,85};
-        int[] arr = {6,9,1,4,2,7};
+        int[] arrayy = {1, 60, -10, 70, -80, 85};
+        int[] arr = {10, 5, 14, 3, 4, 21, 2};
         IArray impl = new ArrayImpl();
-        if(impl.findTripletSumToANumber(arr, 8) == true) {
-            System.out.println("Triplet with given sum exists");
-        } else {
-            System.out.println("Triplet with given sum does not exist");
-        }
+
+        impl.findEqIndex(arr);
     }
 }

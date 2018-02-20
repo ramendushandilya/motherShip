@@ -11,6 +11,7 @@ package faqimpl.array;
  *         Segregate zero and one together in an array which has only zeroes and ones
  *         Find the two pairs in an array whose sum is closet to zero
  *         Find a triplet in an array with a given sum
+ *         Find the equillibrium index in an array
  */
 public interface IArray {
 
@@ -33,5 +34,7 @@ public interface IArray {
     void findElementsSumCloseZero(int[] array);
 
     boolean findTripletSumToANumber(int[] array, int sum);
+
+    void findEqIndex(int[] array);
 
 }

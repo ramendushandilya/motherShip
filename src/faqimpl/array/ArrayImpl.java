@@ -251,5 +251,38 @@ public class ArrayImpl implements IArray{
         return false;
     }
 
+    //O(n) time complexity and O(n) space complexity
+    @Override
+    public void findEqIndex(int[] array) {
 
+        int[] leftSum = new int[array.length];
+        int[] rightSum = new int[array.length];
+        int lSum = array[0];
+        int rSum = array[array.length-1];
+        int flag = 0;
+
+        //Construct the left sum array
+        for(int i = 1 ; i < array.length ; i++) {
+            leftSum[i] = lSum + array[i];
+            lSum = leftSum[i];
+        }
+
+        //Construct the right sum array
+        for(int i = array.length-2 ; i > 0 ; i--) {
+            rightSum[i] = rSum + array[i];
+            rSum = rightSum[i];
+        }
+
+        for(int i = 0 ; i < leftSum.length -1 ; i++) {
+            if(leftSum[i] == rightSum[i+1]) {
+                System.out.println("Equilibrium index is "+ i);
+                flag = 1;
+                break;
+            }
+        }
+
+        if(flag == 0) {
+            System.out.println("Equilibrium index not present in the array!");
+        }
+    }
 }
