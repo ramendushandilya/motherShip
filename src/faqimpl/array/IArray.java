@@ -28,6 +28,8 @@ public interface IArray {
 
     void segregateOddEven(int[] array);
 
+    void findElementsSumCloseZero(int[] array);
+
 
 
 }

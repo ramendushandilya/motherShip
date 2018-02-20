@@ -1,5 +1,7 @@
 package faqimpl.array;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -188,5 +190,36 @@ public class ArrayImpl implements IArray{
         for(int i = 0 ; i < array.length ; i++) {
             System.out.print(array[i]+"->");
         }
+    }
+
+    //O(n Log n) time complexity, O(1) space complexity
+    @Override
+    public void findElementsSumCloseZero(int[] array) {
+
+        int sum = 0;
+        int minSum = Integer.MAX_VALUE;
+        int left = 0;
+        int right = array.length-1;
+        int minLeft = left;
+        int minRight = right;
+        Arrays.sort(array); //O(n log n) for sorting the array
+
+        //Takes O(n) for traversing the array from both ends
+        while (left < right) {
+            sum = array[left] + array[right];
+
+            if(Math.abs(sum) < Math.abs(minSum)) {
+                minSum = sum;
+                minLeft = left;
+                minRight = right;
+            }
+
+            if(sum < 0 ) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        System.out.println("The elements whose sum is closest to zero is "+ array[minLeft]+" "+array[minRight]);
     }
 }

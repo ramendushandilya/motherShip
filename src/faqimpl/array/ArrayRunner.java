@@ -8,9 +8,8 @@ package faqimpl.array;
 public class ArrayRunner {
 
     public static void main(String[] args) {
-        int[] arrayy = {1,2,3,2,3,1,3};
-        int[] array = {1,1,1,1,0,0,0,0,1};
+        int[] arrayy  = {1,60,-10,70,-80,85};
         IArray impl = new ArrayImpl();
-        impl.segregateOddEven(arrayy);
+        impl.findElementsSumCloseZero(arrayy);
     }
 }
