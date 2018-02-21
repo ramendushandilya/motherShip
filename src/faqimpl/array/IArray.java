@@ -13,6 +13,7 @@ package faqimpl.array;
  *         Find a triplet in an array with a given sum
  *         Find the equillibrium index in an array
  *         Given an array with all zeroes in beginning and all ones towards the end, find the index where 1 starts. Size of array is not known
+ *         Find the maximum number in a sliding window of size k for a given array
  */
 public interface IArray {
 
@@ -39,5 +40,7 @@ public interface IArray {
     void findEqIndex(int[] array);
 
     void findFirstOne(int[] array);
+
+    void findMaxInSlidingWindow(int[] array, int k);
 
 }

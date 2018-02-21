@@ -297,5 +297,43 @@ public class ArrayImpl implements IArray{
 
     }
 
+    //O(n) time complexity O(n) space complexity. Makes use of dynamic programming
+    @Override
+    public void findMaxInSlidingWindow(int[] array, int k) {
+
+        //Number of the sliding windows possible
+        int windowNumber = array.length - k + 1;
+        int[] ltr = new int[array.length];
+        int[] rtl = new int[array.length];
+        int[] slidingWindowMaxValues = new int[windowNumber];
+
+        //Construct the left to right array in chunks of window size
+        for(int i = 0 ; i < array.length ; i++) {
+            if(i % k == 0) {
+                ltr[i] = array[i];
+            } else {
+                ltr[i] = Math.max(ltr[i-1], array[i]);
+            }
+        }
+
+        //Construct the right to left array in chunks for window size
+        for(int i = array.length-1 ; i > 0 ; i--) {
+            if(i == array.length-1) {
+                rtl[i] = array[i];
+            } else if((i+1) % k == 0) {
+                rtl[i] = array[i];
+            } else {
+                rtl[i] = Math.max(rtl[i+1], array[i]);
+            }
+        }
+
+        for(int i = 0 ; i < windowNumber ; i++) {
+            slidingWindowMaxValues[i] = Math.max(rtl[i], ltr[i + k -1]);
+        }
+
+        for(int i = 0 ; i < windowNumber; i++) {
+            System.out.println(slidingWindowMaxValues[i] + "->>");
+        }
+    }
 
 }
