@@ -14,6 +14,8 @@ package faqimpl.array;
  *         Find the equillibrium index in an array
  *         Given an array with all zeroes in beginning and all ones towards the end, find the index where 1 starts. Size of array is not known
  *         Find the maximum number in a sliding window of size k for a given array
+ *         Find the number elements smaller than the given element on the right hand side
+ *         Find the subarray with a given sum
  */
 public interface IArray {
 
@@ -43,4 +45,7 @@ public interface IArray {
 
     void findMaxInSlidingWindow(int[] array, int k);
 
+    void findSmallerOnRight(int[] array);
+
+    void subArraySum(int[] array, int sum);
 }

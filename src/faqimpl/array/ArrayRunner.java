@@ -9,8 +9,8 @@ public class ArrayRunner {
 
     public static void main(String[] args) {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
-        int[] arr = {1, 2, 3, 1, 4, 5, 2, 3, 6};
+        int[] arr = {-10, 0, 2, -2, -20, 10};
         IArray impl = new ArrayImpl();
-        impl.findMaxInSlidingWindow(arr,3);
+        impl.subArraySum(arr, 20);
     }
 }

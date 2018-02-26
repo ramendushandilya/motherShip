@@ -1,8 +1,6 @@
 package faqimpl.array;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author rams0516
@@ -336,4 +334,40 @@ public class ArrayImpl implements IArray{
         }
     }
 
+    //TODO Implement using a self balancing binary search tree
+    @Override
+    public void findSmallerOnRight(int[] array) {
+
+    }
+
+    //Use of Hash Map, time complexity O(1), space complexity O(n) for the hash map
+    @Override
+    public void subArraySum(int[] array, int sum) {
+        int currentSum = 0;
+        int flag = 0;
+        Map<Integer, Integer> difference = new HashMap<>();
+
+        for(int i = 0 ; i < array.length ; i++) {
+            //Gets the consecutive sum till this point in the array
+            currentSum += array[i];
+
+            //If the sum till this point equals the sum amount, then sub arrays is between zero and the current index value
+            if(currentSum == sum) {
+                System.out.println("The sum sub array found between the indices = "+i+" & "+0);
+                flag = 1;
+                break;
+            }
+
+            //
+            if(difference.containsKey(currentSum-sum)) {
+                System.out.println("The sum sub array found between the indices = "+(difference.get(currentSum-sum)+1)+" & "+i);
+                flag = 1;
+                break;
+            }
+            difference.put(currentSum, i);
+        }
+        if(flag == 0) {
+            System.out.println("No such sub array exists");
+        }
+    }
 }
