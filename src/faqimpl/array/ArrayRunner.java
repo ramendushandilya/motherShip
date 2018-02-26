@@ -9,8 +9,8 @@ public class ArrayRunner {
 
     public static void main(String[] args) {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
-        int[] arr = {1,2,3,4};
+        int[] arr = {2,1,5,9};
         IArray impl = new ArrayImpl();
-        impl.productBetter(arr);
+        impl.xorArray(arr);
     }
 }

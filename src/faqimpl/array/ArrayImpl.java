@@ -466,4 +466,20 @@ public class ArrayImpl implements IArray{
             System.out.println(result);
         }
     }
+
+    //O(n) time complexity and O(1) space complexity
+    @Override
+    public void xorArray(int[] array) {
+        int xor = array[0];
+
+        //Find the xor of all the elements
+        for(int i = 1 ; i < array.length ; i++) {
+            xor ^= array[i];
+        }
+
+        //Xor the value of total xor with the individual element to cancel it out and hence find the desired result
+        for(int i = 0 ; i < array.length ; i++) {
+            System.out.println(xor ^ array[i]);
+        }
+    }
 }
