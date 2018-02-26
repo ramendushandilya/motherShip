@@ -17,6 +17,7 @@ package faqimpl.array;
  *         Find the number elements smaller than the given element on the right hand side
  *         Find the subarray with a given sum
  *         Find the largest sub array in an array which contains equal number of zeroes and ones
+ *         Find the product array for an array such that each element is product of all the elements of array except the present one element
  */
 public interface IArray {
 
@@ -51,4 +52,6 @@ public interface IArray {
     void subArraySum(int[] array, int sum);
 
     void largestSubArrayEqualBinary(int[] array);
+
+    void productArrayNoDiv(int[] array);
 }

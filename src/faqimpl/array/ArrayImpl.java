@@ -411,4 +411,37 @@ public class ArrayImpl implements IArray{
         }
         System.out.println("The largest sub array with the equal number of binary elements is low = "+getLow+" high = "+getHigh);
     }
+
+    //Time complexity is O(n) and space complexity is O(n)
+    @Override
+    public void productArrayNoDiv(int[] array) {
+
+        int[] leftProduct = new int[array.length];
+        int[] rightProduct = new int[array.length];
+
+        int tempProd = array[0];
+        leftProduct[0] = tempProd;
+        for(int i = 1 ; i < array.length ; i++) {
+            tempProd *= array[i];
+            leftProduct[i] = tempProd;
+        }
+        tempProd = array[array.length-1];
+        rightProduct[array.length-1] = tempProd;
+        for(int i = array.length-2 ; i > -1 ; i--) {
+            tempProd *= array[i];
+            rightProduct[i] = tempProd;
+        }
+
+        //Make use of left and right product arrays to print the elements of the actual product array
+        for(int i = 0 ; i < array.length ; i++) {
+            if(i == 0) {
+                System.out.println(rightProduct[i+1]);
+            } else if (i == array.length -1) {
+                System.out.println(leftProduct[i-1]);
+            } else {
+                int result = leftProduct[i-1] * rightProduct[i+1];
+                System.out.println(result);
+            }
+        }
+    }
 }
