@@ -370,4 +370,45 @@ public class ArrayImpl implements IArray{
             System.out.println("No such sub array exists");
         }
     }
+
+    //Use an Auxiliary sum array along with hash map with key as sum array key at an index and value as the index itself
+    //Time complexity O(n) and space complexity O(n)
+    @Override
+    public void largestSubArrayEqualBinary(int[] array) {
+        int[] sumArray = new int[array.length];
+        Map<Integer, Integer> presenceMatrix = new HashMap<>();
+        int size = 0;
+        int getLow = 0;
+        int getHigh = 0;
+        //Replace zero with minus one in the input array
+        for(int i = 0 ; i < array.length ; i++) {
+            if(array[i] == 0) {
+                array[i] = -1;
+            }
+        }
+
+        int sumTemp = 0;
+        //Populate the sum till index array
+        for(int i = 0 ; i < sumArray.length ; i++) {
+            sumTemp += array[i];
+            sumArray[i] = sumTemp;
+        }
+
+        //Iterate over the sum till index array
+        for(int i = 0 ; i < sumArray.length ; i++) {
+            //If element at index not present in the hash, then add it there
+            if(!presenceMatrix.containsKey(sumArray[i])) {
+                presenceMatrix.put(sumArray[i], i);
+            } else {
+                //If the size of the new found pair is bigger, update the range with low and high
+                if(i-presenceMatrix.get(sumArray[i]) > size) {
+                    getHigh = i;
+                    getLow = presenceMatrix.get(sumArray[i])+1;
+                    size = (i - presenceMatrix.get(sumArray[i]));
+                }
+                //Value of low and high at the end of final iteration will give the biggest range with equal binaries
+            }
+        }
+        System.out.println("The largest sub array with the equal number of binary elements is low = "+getLow+" high = "+getHigh);
+    }
 }

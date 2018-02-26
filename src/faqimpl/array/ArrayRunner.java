@@ -9,8 +9,8 @@ public class ArrayRunner {
 
     public static void main(String[] args) {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
-        int[] arr = {-10, 0, 2, -2, -20, 10};
+        int[] arr = {1,0,1,1,1,0,0};
         IArray impl = new ArrayImpl();
-        impl.subArraySum(arr, 20);
+        impl.largestSubArrayEqualBinary(arr);
     }
 }
