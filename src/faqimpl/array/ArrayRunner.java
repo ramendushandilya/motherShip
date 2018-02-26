@@ -11,6 +11,6 @@ public class ArrayRunner {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
         int[] arr = {1,2,3,4};
         IArray impl = new ArrayImpl();
-        impl.productArrayNoDiv(arr);
+        impl.productBetter(arr);
     }
 }

@@ -1,5 +1,7 @@
 package faqimpl.array;
 
+import sun.print.PSPrinterJob;
+
 import java.util.*;
 
 /**
@@ -442,6 +444,26 @@ public class ArrayImpl implements IArray{
                 int result = leftProduct[i-1] * rightProduct[i+1];
                 System.out.println(result);
             }
+        }
+    }
+
+    //Make use of natural logs to improve the space complexity to O(1)
+    @Override
+    public void productBetter(int[] array) {
+        double complementSeed = 1e-9; //Used to counter the rounding off of the integers by the compiler
+        double sum = 0;
+
+        //Post termination of the loop the sum variable shall contain value equivalent to Log(x) where x = a.b.c.d...
+        for(int i = 0 ; i < array.length ; i++) {
+            sum += Math.log10(array[i]);
+        }
+
+        //Value x from the sum amount can be fetched back by taking anti log, which is 10 to the power of sum
+        //Hence to get the anti log of the value without the present element we apply the power function by subtracting
+        //the current element value
+        for(int i = 0 ; i < array.length ; i++) {
+            int result = (int) (complementSeed + Math.pow(10.00, (sum - Math.log10(array[i]))));
+            System.out.println(result);
         }
     }
 }
