@@ -502,6 +502,42 @@ public class ArrayImpl implements IArray{
                 System.out.println(Math.abs(array[i]));
             }
         }
+    }
 
+    /**
+     * Array has n+2 elements where each element ranges from 1 to n inclusive at boundaries
+     * All elements from 1 to n occur at least once except the two numbers which repeat, find the repeating numbers
+     * Shall make use of solving equations, another good approach is making use of XOR operations
+     * @param array
+     */
+    @Override
+    public void findRepeatDuplicates(int[] array) {
+        int x;
+        int y;
+        int deltaOne;
+        int deltaTwo;
+        int deltaThree;
+        int size = array.length - 2;
+        int arraySum = 0;
+        int naturalSum;
+        int arrayMul = array[0];
+        int naturalMul = 1;
+        for(int i = 0 ; i < array.length ; i++) {
+            arraySum += array[i];
+        }
+        naturalSum = (size*(size+1))/2;
+        deltaOne = arraySum - naturalSum; //x+y
+
+        for(int i = 1 ; i < array.length ; i++) {
+            if(i < array.length - 2) {
+                naturalMul *= (i+1);
+            }
+            arrayMul *= array[i];
+        }
+        deltaTwo = arrayMul/naturalMul; //x*y
+        deltaThree = (int)Math.sqrt((deltaOne*deltaOne) - 4*(deltaTwo)); // x-y
+        x = (deltaOne+deltaThree)/2;
+        y = deltaTwo/x;
+        System.out.println("Repeating numbers are = "+y+" and "+x);
     }
 }

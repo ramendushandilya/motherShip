@@ -22,6 +22,7 @@ package faqimpl.array;
  *         Given an array construct a xor array such that the element equals the xor of all other elements except the current element
  *         Given an array which is nearly sorted, sort it using merge sort
  *         Given an array which has duplicate elements, find the duplicates in the array in O(n) time and constant space, elements are in the range 0 to n-1
+ *         Given an array of size n+2 size every element ocurring atleast once except two which repeat, find duplicates
  */
 public interface IArray {
 
@@ -66,4 +67,6 @@ public interface IArray {
     void sortNearlySorted(int[] array);
 
     void findDuplicate(int[] array);
+
+    void findRepeatDuplicates(int[] array);
 }

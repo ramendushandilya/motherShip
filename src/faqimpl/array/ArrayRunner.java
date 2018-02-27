@@ -9,8 +9,8 @@ public class ArrayRunner {
 
     public static void main(String[] args) {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
-        int[] arr = {1,2,3,1,3,6,6};
+        int[] arr = {1,2,3,4,5,1,2};
         IArray impl = new ArrayImpl();
-        impl.findDuplicate(arr);
+        impl.findRepeatDuplicates(arr);
     }
 }
