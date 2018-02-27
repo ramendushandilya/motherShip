@@ -570,4 +570,12 @@ public class ArrayImpl implements IArray{
             System.out.print(array[i]+" ");
         }
     }
+
+    /**
+     *
+     */
+    @Override
+    public void tapRainWater(int[] array) {
+
+    }
 }

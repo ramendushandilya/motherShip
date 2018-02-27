@@ -24,6 +24,7 @@ package faqimpl.array;
  *         Given an array which has duplicate elements, find the duplicates in the array in O(n) time and constant space, elements are in the range 0 to n-1
  *         Given an array of size n+2 size every element ocurring atleast once except two which repeat, find duplicates
  *         Rotate an array by to left by d
+ *         Rain water tapping problem
  */
 public interface IArray {
 
@@ -72,4 +73,6 @@ public interface IArray {
     void findRepeatDuplicates(int[] array);
 
     void rotateArrayLeft(int[] array, int d);
+
+    void tapRainWater(int[] array);
 }
