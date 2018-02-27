@@ -540,4 +540,34 @@ public class ArrayImpl implements IArray{
         y = deltaTwo/x;
         System.out.println("Repeating numbers are = "+y+" and "+x);
     }
+
+    //Time complexity O(n), space complexity is constant O(1)
+    //Approach - Reverse the first d elements, reverse the rest n-d elements, reverse the entire array
+    @Override
+    public void rotateArrayLeft(int[] array, int d) {
+
+        reverseArray(array, 0, d-1); // Reverse the d size of the array
+        reverseArray(array, d, array.length-1); //Reverse the remaining n-d of the array
+        reverseArray(array, 0, array.length-1); //Reverse the entire new array
+        showArray(array);
+    }
+
+    //Reverse an array based on low and high indices
+    public void reverseArray(int[] array, int low, int high) {
+        int temp;
+        while(low < high) {
+            temp = array[low];
+            array[low] = array[high];
+            array[high] = temp;
+            low++;
+            high--;
+        }
+    }
+
+    //Helper function to debug array state
+    public void showArray(int[] array) {
+        for(int i = 0 ; i < array.length ; i++) {
+            System.out.print(array[i]+" ");
+        }
+    }
 }

@@ -23,6 +23,7 @@ package faqimpl.array;
  *         Given an array which is nearly sorted, sort it using merge sort
  *         Given an array which has duplicate elements, find the duplicates in the array in O(n) time and constant space, elements are in the range 0 to n-1
  *         Given an array of size n+2 size every element ocurring atleast once except two which repeat, find duplicates
+ *         Rotate an array by to left by d
  */
 public interface IArray {
 
@@ -69,4 +70,6 @@ public interface IArray {
     void findDuplicate(int[] array);
 
     void findRepeatDuplicates(int[] array);
+
+    void rotateArrayLeft(int[] array, int d);
 }
