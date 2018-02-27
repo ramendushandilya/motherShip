@@ -572,10 +572,37 @@ public class ArrayImpl implements IArray{
     }
 
     /**
-     *
+     * There are towers of different heights and their width is same i.e. 1 unit. Find the amount of water that can be
+     * trapped inside the towers at max.
+     * Time complexity - O(n), Space complexity - O(1)
+     * This is the best solution possible as opposed to calculating the temp arrays for left and right maximums
      */
     @Override
     public void tapRainWater(int[] array) {
 
+        int result = 0;
+        int low = 0;
+        int high = array.length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+
+        while(low <= high) {
+            if(array[low] < array[high]) {
+                if(array[low] > leftMax) {
+                    leftMax = array[low];
+                } else {
+                    result += leftMax - array[low];
+                    low++;
+                }
+            } else {
+                if(array[high] > rightMax) {
+                    rightMax = array[high];
+                } else {
+                    result += rightMax - array[high];
+                    high--;
+                }
+            }
+        }
+        System.out.println("The maximum amount of water tapped is = "+result);
     }
 }
