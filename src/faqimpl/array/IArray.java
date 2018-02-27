@@ -20,6 +20,8 @@ package faqimpl.array;
  *         Find the product array for an array such that each element is product of all the elements of array except the present one element
  *         Improve the above function to space complexity O(1) by the use of natural logs
  *         Given an array construct a xor array such that the element equals the xor of all other elements except the current element
+ *         Given an array which is nearly sorted, sort it using merge sort
+ *         Given an array which has duplicate elements, find the duplicates in the array in O(n) time and constant space, elements are in the range 0 to n-1
  */
 public interface IArray {
 
@@ -60,4 +62,8 @@ public interface IArray {
     void productBetter(int[] array);
 
     void xorArray(int[] array);
+
+    void sortNearlySorted(int[] array);
+
+    void findDuplicate(int[] array);
 }

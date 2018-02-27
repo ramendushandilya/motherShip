@@ -482,4 +482,26 @@ public class ArrayImpl implements IArray{
             System.out.println(xor ^ array[i]);
         }
     }
+
+    //TODO Implement later
+    @Override
+    public void sortNearlySorted(int[] array) {
+
+    }
+
+    //Time complexity O(n) and time complexity O(1)
+    //Iterate over array, goto the index equals to the value of current array element, make it negative, if it's already
+    //negative then the array element is repeating
+    @Override
+    public void findDuplicate(int[] array) {
+
+        for(int i = 0 ; i < array.length ; i++) {
+            if(array[Math.abs(array[i])] >= 0) {
+                array[Math.abs(array[i])] = -array[Math.abs(array[i])];
+            } else {
+                System.out.println(Math.abs(array[i]));
+            }
+        }
+
+    }
 }
