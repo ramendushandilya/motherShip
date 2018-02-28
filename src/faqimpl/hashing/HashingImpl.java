@@ -178,4 +178,9 @@ public class HashingImpl implements IHashing{
         }
         System.out.println("Total sum zero sub arrays = "+totalSubArrays);
     }
+
+    @Override
+    public void fourNumberSumEqualityPair(int[] array) {
+
+    }
 }
