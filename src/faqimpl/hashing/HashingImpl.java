@@ -141,4 +141,41 @@ public class HashingImpl implements IHashing{
             }
         }
     }
+
+    //O(n) time complexity, O(n) space complexity
+    @Override
+    public void allSubArraysSumZero(int[] array) {
+        //create the sum array
+        int totalSubArrays = 0;
+        int temp;
+        int[] sum = new int[array.length];
+        sum[0] = array[0];
+        temp = sum[0];
+        for(int i = 1 ; i < array.length ; i++) {
+            temp += array[i];
+            sum[i] = temp;
+        }
+        //check the cyclic behaviour
+        //trace positions to be implemented
+        HashMap<Integer, Integer> sumFrequencyMap = new HashMap<>();
+        for(int i = 0 ; i < sum.length ; i++) {
+            if(sumFrequencyMap.containsKey(sum[i])) {
+                int count = sumFrequencyMap.get(sum[i]);
+                sumFrequencyMap.put(sum[i], count+1);
+            } else {
+                sumFrequencyMap.put(sum[i], 1);
+            }
+        }
+        if(sum[sum.length-1] == 0) {
+            totalSubArrays++;
+        }
+
+        Set<Integer> keySet = sumFrequencyMap.keySet();
+        for(Integer key : keySet) {
+            if(sumFrequencyMap.get(key) > 1) {
+                totalSubArrays += sumFrequencyMap.get(key);
+            }
+        }
+        System.out.println("Total sum zero sub arrays = "+totalSubArrays);
+    }
 }

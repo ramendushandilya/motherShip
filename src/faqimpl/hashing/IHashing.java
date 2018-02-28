@@ -17,4 +17,6 @@ public interface IHashing {
     void distinctElementsInSlidingWindow(int[] array, int windowSize);
 
     void inRangeNotInArray(int[] array, int low, int high);
+
+    void allSubArraysSumZero(int[] array);
 }
