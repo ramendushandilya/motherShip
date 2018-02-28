@@ -9,8 +9,8 @@ public class ArrayRunner {
 
     public static void main(String[] args) {
         int[] arrayy = {1, 60, -10, 70, -80, 85};
-        int[] arr = {3,0,0,2,0,4};
+        int[] arr = {4,6,3,7};
         IArray impl = new ArrayImpl();
-        impl.tapRainWater(arr);
+        impl.numberOfTriangles(arr);
     }
 }

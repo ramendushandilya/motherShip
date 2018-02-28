@@ -25,6 +25,7 @@ package faqimpl.array;
  *         Given an array of size n+2 size every element ocurring atleast once except two which repeat, find duplicates
  *         Rotate an array by to left by d
  *         Rain water tapping problem
+ *         Find the number of possible triangles in an array
  */
 public interface IArray {
 
@@ -75,4 +76,7 @@ public interface IArray {
     void rotateArrayLeft(int[] array, int d);
 
     void tapRainWater(int[] array);
+
+    void numberOfTriangles(int[] array);
+
 }

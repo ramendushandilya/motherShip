@@ -605,4 +605,31 @@ public class ArrayImpl implements IArray{
         }
         System.out.println("The maximum amount of water tapped is = "+result);
     }
+
+    //Works in O(n2) time complexity and O(1) space complexity
+    @Override
+    public void numberOfTriangles(int[] array) {
+
+        Arrays.sort(array); //Sort the array with n log(n)
+        int result = 0;
+
+        //Start iterating from 3rd element to the last element
+        for(int i = 2 ; i < array.length ; i++) {
+            //We modify left and right at each iteration of the loop
+            int left = 0; //Left always starts from 0
+            int right = i-1; //Right start from one less than the current index
+
+            while(left < right) {
+                if(array[left] + array[right] > array[i]) { //If triangle inequality is satisfied
+                    result+= right - left; //Update the result count. If the triangle forms with current indices it will
+                                           //form with the left index one position after as well, hence the result is
+                                           //updated with right - left difference
+                    right--;
+                } else {
+                    left++;
+                }
+            }
+        }
+        System.out.println("Number of possible triangles = "+result);
+    }
 }
