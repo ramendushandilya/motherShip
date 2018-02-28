@@ -3,9 +3,9 @@ package faqimpl.hashing;
 public class HashRunner {
 
     public static void main(String[] args) {
-        int[] arr = {5, 3, 5, 1, 3, 3};
+        int[] arr = {1, 2, 1, 3, 4, 2, 3};
         HashingImpl impl = new HashingImpl();
-        impl.groupMultipleByOrder(arr);
+        impl.distinctElementsInSlidingWindow(arr, 4);
     }
 
 }

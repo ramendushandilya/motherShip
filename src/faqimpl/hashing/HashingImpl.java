@@ -1,5 +1,6 @@
 package faqimpl.hashing;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -84,5 +85,48 @@ public class HashingImpl implements IHashing{
         }
     }
 
+    //O(n) time complexity, O(n) space complexity
+    @Override
+    public void distinctElementsInSlidingWindow(int[] array, int windowSize) {
+        //Stores the distinct elements count
+        int distinctCount = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
+        //Populate the hash map with the count for the individual elements for the first window size along with d count
+        for(int i = 0 ; i < windowSize ; i++) {
+            if(map.containsKey(array[i])) {
+                int count = map.get(array[i]) + 1;
+                map.put(array[i], count);
+            } else {
+                map.put(array[i], 1);
+                distinctCount++;
+            }
+        }
+        //Print the number of uniques for the first window
+        System.out.print(distinctCount);
+
+        //Traverse the rest of the array
+        for(int i = windowSize ; i < array.length ; i++) {
+            //Remove the first element of the previous window
+            //If there was only one such element then reduce the distinct count
+            if(map.get(array[i-windowSize]) == 1) {
+                map.remove(array[i-windowSize]);
+                distinctCount--;
+            } else { //Else just decrement the count of the element
+                int count = map.get(array[i-windowSize]) - 1;
+                map.put(array[i-windowSize], count);
+            }
+
+            //If the current element not present in the map, add it and increment the count of the distinct element
+            if (map.get(array[i]) == null) {
+                map.put(array[i], 1);
+                distinctCount++;
+            } else { //Else, increment the count of the element and update it accordingly
+                int count = map.get(array[i]) + 1;
+                map.put(array[i], count);
+            }
+            //Show the distinct element count in the current window
+            System.out.print(distinctCount);
+        }
+    }
 }
