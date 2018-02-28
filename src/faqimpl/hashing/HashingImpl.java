@@ -30,4 +30,27 @@ public class HashingImpl implements IHashing{
             System.out.println("Doesn't have duplicates");
         }
     }
+
+    //Use of hashing method
+    //Time complexity O(n)+O(m), Space complexity O(m)
+    @Override
+    public void isDisjoint(int[] arrayOne, int[] arrayTwo) {
+        int flag = 0;
+        //create a hash set of all the elements of the array one
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0 ; i < arrayOne.length ; i++) {
+            set.add(arrayOne[i]);
+        }
+
+        //Search every element in the array two in the hash set
+        for(int i = 0 ; i < arrayTwo.length ; i++) {
+            if(set.contains(arrayTwo[i])) {
+                flag = 1;
+                System.out.println("Not disjoint");
+                break;
+            }
+        }
+        if(flag == 0)
+            System.out.println("Is disjoint");
+    }
 }
