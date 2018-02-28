@@ -15,4 +15,6 @@ public interface IHashing {
     void groupMultipleByOrder(int[] array);
 
     void distinctElementsInSlidingWindow(int[] array, int windowSize);
+
+    void inRangeNotInArray(int[] array, int low, int high);
 }

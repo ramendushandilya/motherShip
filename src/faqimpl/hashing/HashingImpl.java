@@ -1,9 +1,6 @@
 package faqimpl.hashing;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.*;
 
 public class HashingImpl implements IHashing{
 
@@ -127,6 +124,21 @@ public class HashingImpl implements IHashing{
             }
             //Show the distinct element count in the current window
             System.out.print(distinctCount);
+        }
+    }
+
+    //O(n) time complexity, O(m) space complexity
+    @Override
+    public void inRangeNotInArray(int[] array, int low, int high) {
+
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0 ; i < array.length ; i++) {
+            set.add(array[i]);
+        }
+        for(int i = low; i <= high+1 ; i++) {
+            if(!set.contains(i)) {
+                System.out.println("Present in range not in array"+i);
+            }
         }
     }
 }
