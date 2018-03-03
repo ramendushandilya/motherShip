@@ -181,6 +181,33 @@ public class HashingImpl implements IHashing{
 
     @Override
     public void fourNumberSumEqualityPair(int[] array) {
+        int flag = 0;
+        HashMap<Integer, Pair> map = new HashMap<>();
+        for(int i = 0 ; i < array.length ; i++) {
+            for(int j = i+1 ; j < array.length ; j++){
+                int sum = array[i] + array[j];
+                if(!map.containsKey(sum)) {
+                    map.put(sum, new Pair(i, j));
+                }
+                else {
+                    flag = 1;
+                    Pair pair = map.get(sum);
+                    System.out.println("Pair = "+array[i]+", "+array[j]+"--"+array[pair.i]+" "+array[pair.j]);
+                }
+            }
+        }
+        if(flag == 0) {
+            System.out.println("Pair not present");
+        }
+    }
+}
 
+class Pair{
+    int i;
+    int j;
+
+    public Pair(int i, int j) {
+        this.i = i;
+        this.j = j;
     }
 }
