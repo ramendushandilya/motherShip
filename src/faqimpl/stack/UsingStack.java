@@ -1,5 +1,6 @@
 package faqimpl.stack;
 
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -9,6 +10,11 @@ import java.util.Stack;
  */
 public class UsingStack {
 
+    /**
+     * Given an array of integers, print the next greater element in the array
+     * Space complexity - O(n) Time complexity - O(n)
+     * @param array
+     */
     public void nextGreaterElement(int[] array) {
         Stack<Integer> stack = new Stack<>();
         //Place the first element in the stack
@@ -28,4 +34,40 @@ public class UsingStack {
             System.out.println(stack.pop()+"->"+"null");
         }
     }
+
+    /**
+     * Given a list range of intervals, merge them and return the list with merged intervals
+     * e.g i/p - {{1,3}, {2,4}, {5,7}, {6,8}} to {{1,4}, {5,8}}
+     * e.g i/p - {{6,8}, {1,9}, {2,4}, {4,7}} to {{1,9}}
+     * e.g i/p [1,3],[2,6],[8,10],[15,18] to [1,6],[8,10],[15,18]
+     * Time complexity O(n logn), space complexity - O(1)
+     * @param intervals
+     */
+    public void mergeIntervals(List<Intervals> intervals) {
+
+        //If the size of the interval list is one or less, return the same
+        if(intervals.size() <= 1) {
+            System.out.println(intervals.get(0).start+"-"+intervals.get(0).end);
+        }
+
+        //Sort the intervals based on the starting element of the intervals
+        intervals.sort((i1, i2) -> Integer.compare(i1.start, i2.start));
+
+        int start = intervals.get(0).start;
+        int end = intervals.get(0).end;
+
+        //Iterate over the ranges and find the overlaps
+        for(Intervals it : intervals) {
+            if(it.start <= end) {
+                end = Math.max(end, it.end);
+            } else {
+                System.out.println(start+"->"+end);
+                start = it.start;
+                end = it.end;
+            }
+        }
+        System.out.println(start+"->"+end);
+    }
+
+
 }
