@@ -69,5 +69,52 @@ public class UsingStack {
         System.out.println(start+"->"+end);
     }
 
+    //Helper method to check the balancing pair
+    boolean isMatchingPair(char one, char two) {
+        if(one == '(' && two == ')')
+            return true;
+        else if(one == '{' && two == '}')
+            return true;
+        else if(one == '[' && two == ']')
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Check if a given expression of parentheses is balanced or not
+     * Time complexity - O(n), space complexity - O(n)
+     * @param expression
+     * @return
+     */
+    boolean isParanBalanced(char[] expression) {
+        Stack<Character> stack = new Stack<>();
+
+        //Iterate over the character array
+        for(int i = 0 ; i < expression.length ; i++) {
+            //If the expression character is opening one, push onto the stack
+            if(expression[i] == '(' || expression[i] == '{' || expression[i] == '[') {
+                stack.push(expression[i]);
+            }
+
+            //If the expression character is the closing one, check if the stack is empty, if yes then it's not balanced
+            //If not empty and the popped element and expression at i don't form a pair then also not balanced
+            if(expression[i] == ')' || expression[i] == '}' || expression[i] == ']') {
+                if(stack.isEmpty()) {
+                    return false;
+                } else if(!isMatchingPair(stack.pop(), expression[i])) {
+                    return false;
+                }
+            }
+        }
+
+        //Once we are done iterating the character elements, if the stack is empty then everything matched else not
+        if(stack.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }
