@@ -26,8 +26,7 @@ public class StackRunner {
         intervalsList.add(new Intervals(8,10));
         intervalsList.add(new Intervals(15,18));*/
 
-
-        usingStack.mergeIntervals(intervalsList);
+        usingStack.stockSpan(new int[]{10, 4, 5, 90, 120, 80});
     }
 
 }

@@ -117,4 +117,32 @@ public class UsingStack {
     }
 
 
+    public void stockSpan(int[] array) {
+        int[] span = new int[array.length];
+
+        //Maintains the index of elements
+        Stack<Integer> stack = new Stack<>();
+
+        //Push the index of first element
+        stack.push(0);
+        span[0] = 1; //Span of first element is always one
+
+        for(int i = 1 ; i < array.length ; i++) {
+            //While either stack is not empty or price at index i is greater than equal to array at index on the top
+            //element of the stack, pop stack
+            while (!stack.isEmpty() && array[i] >= array[stack.peek()]) {
+                stack.pop();
+            }
+            //If stack is empty then span at index i i+1 one the index value plus one for itself
+            //If stack is non empty then span at index i is i minus the index value at top of the stack
+            span[i] = stack.isEmpty() ? (i+1) : i - stack.peek();
+            //Push i to the stack
+            stack.push(i);
+        }
+
+        for(Integer i : span) {
+            System.out.println(i);
+        }
+    }
+
 }
