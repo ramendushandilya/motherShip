@@ -1,0 +1,9 @@
+package faqimpl.backtracking;
+
+/**
+ * @author rams0516
+ *         Date: 3/20/2018
+ *         Time: 2:17 PM
+ */
+public interface IBackTracking {
+}
