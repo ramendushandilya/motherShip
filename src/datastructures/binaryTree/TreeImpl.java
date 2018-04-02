@@ -1,5 +1,9 @@
 package datastructures.binaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * @author rams0516
  *         Date: 5/24/2017
@@ -21,6 +25,20 @@ public class TreeImpl {
         two.setLeftChild(five);
     }
 
+    /**
+     * Tree traversal is broadly of two types
+     * Depth First Search (DFS)
+     * Breadth First Search (BFS)
+     * DFS is of three types
+     * Pre order, In Order, Post Order
+     * BFS is of one type, level order traversal
+     */
+
+    /**
+     * Pre order traversal of tree
+     * Time complexity O(n)
+     * @param root
+     */
     public void preOrder(Node root) {
         if(root != null) {
             System.out.println(root.getData());
@@ -29,6 +47,11 @@ public class TreeImpl {
         }
     }
 
+    /**
+     * In order traversal of tree
+     * Time Complexity O(n)
+     * @param root
+     */
     public void inOrder(Node root) {
         if(root != null) {
             inOrder(root.getLeftChild());
@@ -37,11 +60,94 @@ public class TreeImpl {
         }
     }
 
+    /**
+     * Post order traversal of tree
+     * Time Complexity O(n)
+     * @param root
+     */
     public  void postOrder(Node root) {
         if(root != null) {
             postOrder(root.getLeftChild());
             postOrder(root.getRightChild());
             System.out.println(root.getData());
+        }
+    }
+
+    /**
+     * Does the level order traversal of the tree
+     * Time Complexity O(n), since every node is visited exactly once
+     * @param root
+     */
+    public void levelOrderTraversal(Node root) {
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node candidate = queue.poll();
+            System.out.print(candidate.getData()+"->");
+            if(candidate.getLeftChild() != null) {
+                queue.add(candidate.getLeftChild());
+            }
+            if(candidate.getRightChild() != null) {
+                queue.add(candidate.getRightChild());
+            }
+        }
+    }
+
+    /**
+     * In order traversal of tree without recursion
+     * Time complexity O(n)
+     * TODO See once more for clarity
+     * @param root
+     */
+    public void inOrderNoRecursion(Node root) {
+
+        Node node = root;
+        Stack<Node> stack = new Stack<>();
+
+        //First node to be printed is the left most node
+        while (node != null) {
+            stack.push(node);
+            node = node.getLeftChild();
+        }
+
+        while (stack.size() > 0) {
+            node = stack.pop();
+            System.out.println(node.getData()+"-");
+            if(node.getRightChild() != null) {
+                node = node.getRightChild();
+
+                while (node != null) {
+                    stack.push(node);
+                    node = node.getLeftChild();
+                }
+            }
+        }
+    }
+
+    /**
+     * Prints the level order in reverse, that is from bottom to top
+     * Time complexity O(n) since every node is visited exactly once
+     * @param root
+     */
+    public void reverseLevelOrder(Node root) {
+
+        Queue<Node> queue = new LinkedList<>();
+        Stack<Node> stack = new Stack<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
+            stack.push(temp);
+            if(temp.getRightChild() != null) {
+                queue.add(temp.getRightChild());
+            }
+            if(temp.getLeftChild() != null) {
+                queue.add(temp.getLeftChild());
+            }
+        }
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop().getData()+"-");
         }
     }
 
