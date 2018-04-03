@@ -166,6 +166,22 @@ public class TreeImpl {
         }
     }
 
+    /** Pre order traversal of tree without recursion
+     * Time complexity O(n)
+     * @param root
+     */
+    public void preOrderNoRecursion(Node root) {
+
+    }
+
+    /** Pre order traversal of tree without recursion
+     * Time complexity O(n)
+     * @param root
+     */
+    public void postOrderNoRecursion(Node root) {
+
+    }
+
     /**
      * Prints the level order in reverse, that is from bottom to top
      * Time complexity O(n) since every node is visited exactly once
