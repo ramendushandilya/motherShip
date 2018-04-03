@@ -203,6 +203,59 @@ public class TreeImpl {
     }
 
     /**
+     * Count the number of th leaf nodes in a binary tree, iterative approach
+     * Time complexity : O(n)
+     * @param root
+     */
+    public void countLeavesIterative(Node root) {
+
+        int countLeaf = 0;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
+            if (temp.getLeftChild() == null && temp.getRightChild() == null) {
+                countLeaf++;
+            }
+            if(temp.getLeftChild() != null) {
+                queue.add(temp.getLeftChild());
+            }
+            if(temp.getRightChild() != null) {
+                queue.add(temp.getRightChild());
+            }
+        }
+        System.out.println("Count of leaf nodes in the tree = "+countLeaf);
+    }
+
+    /**
+     * Counts the number of full nodes in a binary tree
+     * A full node is one which has both left & right child
+     * Time complexity : O(n)
+     * @param root
+     */
+    public void countFullNodes(Node root) {
+
+        int fullNodeCount = 0;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
+            if(temp.getLeftChild() != null && temp.getRightChild() != null) {
+                fullNodeCount++;
+            }
+            if(temp.getLeftChild() != null) {
+                queue.add(temp.getLeftChild());
+            }
+            if(temp.getRightChild() != null) {
+                queue.add(temp.getRightChild());
+            }
+        }
+        System.out.println("Count of full nodes in the tree = "+fullNodeCount);
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
