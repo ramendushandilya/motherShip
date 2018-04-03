@@ -28,6 +28,23 @@ public class TreeImpl {
         return root;
     }
 
+    public  Node createDup() {
+
+        Node root = new Node(10);
+        Node one = new Node(8);
+        Node two = new Node(2);
+        Node three = new Node(3);
+        Node four = new Node(5);
+        Node five = new Node(0);
+
+        root.setLeftChild(one);
+        root.setRightChild(two);
+        one.setLeftChild(three);
+        one.setRightChild(four);
+        two.setLeftChild(five);
+        return root;
+    }
+
     public Node createTreeWithHalfNodes() {
 
         Node root = new Node(2);
@@ -253,6 +270,48 @@ public class TreeImpl {
             }
         }
         System.out.println("Count of full nodes in the tree = "+fullNodeCount);
+    }
+
+    /**
+     * Checks whether two binary trees are identical or not
+     * Two identical trees have same number of node with data in same order
+     * @param treeOne
+     * @param treeTwo
+     * @return
+     */
+    public boolean isIdentical(Node treeOne, Node treeTwo) {
+
+        boolean flag = true;
+        Queue<Node> queueOne = new LinkedList<>();
+        Queue<Node> queueTwo = new LinkedList<>();
+        queueOne.add(treeOne);
+        queueTwo.add(treeTwo);
+
+        while (!queueOne.isEmpty() && !queueTwo.isEmpty()) {
+            Node tempOne = queueOne.poll();
+            Node tempTwo = queueTwo.poll();
+            if(tempOne.getData() != tempTwo.getData()) {
+                flag = false;
+                break;
+            }
+            if(tempOne.getLeftChild() != null) {
+                queueOne.add(tempOne.getLeftChild());
+            }
+            if(tempOne.getRightChild() != null) {
+                queueOne.add(tempOne.getRightChild());
+            }
+
+            if(tempTwo.getLeftChild() != null) {
+                queueTwo.add(tempTwo.getLeftChild());
+            }
+            if(tempTwo.getRightChild() != null) {
+                queueTwo.add(tempTwo.getRightChild());
+            }
+        }
+        if(queueOne.size() != queueTwo.size()) {
+            flag = false;
+        }
+        return flag;
     }
 
     /**

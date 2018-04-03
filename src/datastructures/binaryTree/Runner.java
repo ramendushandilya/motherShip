@@ -7,7 +7,10 @@ package datastructures.binaryTree;
  */
 public class Runner {
     public static void main(String[] args) {
-        TreeImpl tree = new TreeImpl();
-        tree.countFullNodes(tree.createTreeWithHalfNodes());
+        Node one = new TreeImpl().create();
+        Node two = new TreeImpl().createDup();
+
+        boolean flag = new TreeImpl().isIdentical(one, two);
+        System.out.println(flag);
     }
 }
