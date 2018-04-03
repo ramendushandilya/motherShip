@@ -10,19 +10,43 @@ import java.util.Stack;
  *         Time: 1:06 PM
  */
 public class TreeImpl {
-    Node root = new Node(10);
-    Node one = new Node(8);
-    Node two = new Node(2);
-    Node three = new Node(3);
-    Node four = new Node(5);
-    Node five = new Node(2);
 
-    public void create() {
+    public  Node create() {
+
+        Node root = new Node(10);
+        Node one = new Node(8);
+        Node two = new Node(2);
+        Node three = new Node(3);
+        Node four = new Node(5);
+        Node five = new Node(2);
+
         root.setLeftChild(one);
         root.setRightChild(two);
         one.setLeftChild(three);
         one.setRightChild(four);
         two.setLeftChild(five);
+        return root;
+    }
+
+    public Node createTreeWithHalfNodes() {
+
+        Node root = new Node(2);
+        Node two = new Node(7);
+        Node three = new Node(5);
+        Node four = new Node(6);
+        Node five = new Node(9);
+        Node six = new Node(1);
+        Node seven = new Node(2);
+        Node eight = new Node(8);
+
+        root.setLeftChild(two);
+        root.setRightChild(three);
+        two.setRightChild(four);
+        three.setRightChild(five);
+        four.setLeftChild(six);
+        four.setRightChild(seven);
+        five.setLeftChild(eight);
+        return root;
     }
 
     /**
@@ -149,6 +173,33 @@ public class TreeImpl {
         while (!stack.isEmpty()) {
             System.out.print(stack.pop().getData()+"-");
         }
+    }
+
+    /**
+     * Count the number of half Nodes in a binary tree
+     * Half node in a tree is a tree which has one child
+     * Time complexity : O(n)
+     * @param root
+     */
+    public void countHalfNodes(Node root) {
+        int count = 0;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
+            if((temp.getLeftChild() == null && temp.getRightChild() != null) ||
+                    temp.getLeftChild() != null && temp.getRightChild() == null) {
+                count++;
+            }
+            if(temp.getLeftChild() != null) {
+                queue.add(temp.getLeftChild());
+            }
+            if(temp.getRightChild() != null) {
+                queue.add(temp.getRightChild());
+            }
+        }
+        System.out.println("Count of half nodes = "+count);
     }
 
     /**

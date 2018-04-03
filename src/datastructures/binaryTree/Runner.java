@@ -8,7 +8,6 @@ package datastructures.binaryTree;
 public class Runner {
     public static void main(String[] args) {
         TreeImpl tree = new TreeImpl();
-        tree.create();
-        tree.reverseLevelOrder(tree.root);
+        tree.countHalfNodes(tree.createTreeWithHalfNodes());
     }
 }
