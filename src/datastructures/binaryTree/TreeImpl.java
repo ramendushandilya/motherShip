@@ -172,13 +172,31 @@ public class TreeImpl {
      */
     public void preOrderNoRecursion(Node root) {
 
+        Node cursor = root;
+        Stack<Node> stack = new Stack<>();
+        stack.push(cursor);
+
+        while (!stack.isEmpty()) {
+            cursor = stack.pop();
+            System.out.print(cursor.getData()+" - ");
+
+            if(cursor.getRightChild() != null) {
+                stack.push(cursor.getRightChild());
+            }
+
+            if(cursor.getLeftChild() != null) {
+                stack.push(cursor.getLeftChild());
+            }
+        }
     }
 
     /** Pre order traversal of tree without recursion
      * Time complexity O(n)
+     * TODO
      * @param root
      */
     public void postOrderNoRecursion(Node root) {
+
 
     }
 
