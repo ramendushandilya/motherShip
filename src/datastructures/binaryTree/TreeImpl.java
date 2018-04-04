@@ -384,6 +384,21 @@ public class TreeImpl {
     }
 
     /**
+     * Get the size of the binary tree
+     * Time complexity O(n)
+     * @param root
+     * @return
+     */
+    public int getSize(Node root) {
+
+        if(root == null) {
+            return 0;
+        } else {
+            return getSize(root.getLeftChild()) + 1 + getSize(root.getRightChild());
+        }
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
