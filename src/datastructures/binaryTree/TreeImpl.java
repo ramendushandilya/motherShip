@@ -349,6 +349,41 @@ public class TreeImpl {
     }
 
     /**
+     * Iterative way to find the height of the tree, use of level order traversal
+     * Time complexity O(n)
+     *
+     * @param root
+     */
+    public void findHeightIterative(Node root) {
+
+        int height = 0;
+        int nodeCount;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            nodeCount = queue.size();
+            if(nodeCount == 0) {
+                return;
+            } else {
+                height++;
+            }
+
+            while (nodeCount > 0) {
+                Node temp = queue.remove();
+                if(temp.getLeftChild() != null) {
+                    queue.add(temp.getLeftChild());
+                }
+                if(temp.getRightChild() != null) {
+                    queue.add(temp.getRightChild());
+                }
+                nodeCount--;
+            }
+        }
+        System.out.println("Height of the tree = "+height);
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
