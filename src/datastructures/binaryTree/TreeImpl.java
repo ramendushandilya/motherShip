@@ -399,6 +399,37 @@ public class TreeImpl {
     }
 
     /**
+     * Return the lowest common ancestor of given two nodes in a binary tree
+     * @param root
+     * @param one
+     * @param two
+     * @return
+     */
+    public Node getLca(Node root, int one, int two) {
+
+        if(root == null) {
+            return null;
+        }
+
+        if(root.getData() == one || root.getData() == two) {
+            return root;
+        }
+
+        Node left = getLca(root.getLeftChild(), one, two);
+        Node right = getLca(root.getRightChild(), one, two);
+
+        if(left != null && right != null) {
+            return root;
+        }
+
+        if(left == null) {
+            return right;
+        } else {
+            return left;
+        }
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return

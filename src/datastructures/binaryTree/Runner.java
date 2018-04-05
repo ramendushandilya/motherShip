@@ -8,6 +8,6 @@ package datastructures.binaryTree;
 public class Runner {
     public static void main(String[] args) {
         TreeImpl tree = new TreeImpl();
-        System.out.println(tree.getSize(tree.create()));
+        System.out.println(tree.getLca(tree.create(), 3,2).getData());
     }
 }
