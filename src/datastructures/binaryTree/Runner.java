@@ -10,11 +10,14 @@ public class Runner {
         TreeImpl tree = new TreeImpl();
         //tree.cornerNodesAtLevel(tree.create());
         //System.out.println(tree.getHeightRecursive(tree.create()));
-        Node root = tree.create();
-        tree.preOrder(root);
-        System.out.println("\n");
+        //Node root = tree.create();
+        //tree.preOrder(root);
+        //System.out.println("\n");
         //Node mirror = tree.mirrorTree(root);
         //System.out.println(mirror.getData());
-        tree.preOrder(tree.mirrorTree(root));
+        //tree.preOrder(tree.mirrorTree(root));
+
+        tree.preOrder(tree.create());
+        tree.printSpiral(tree.create());
     }
 }

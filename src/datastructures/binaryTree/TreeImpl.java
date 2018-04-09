@@ -551,6 +551,54 @@ public class TreeImpl {
     }
 
     /**
+     * Find if the two trees are isomorphic or not
+     * TODO
+     * @param rootOne
+     * @param rootTwo
+     * @return
+     */
+    public boolean isIsomorphic(Node rootOne, Node rootTwo) {
+
+        return true;
+    }
+
+    /**
+     * Print a tree in Spiral form
+     * @param root
+     */
+    public void printSpiral(Node root) {
+
+        Stack<Node> stackOne = new Stack<>();
+        Stack<Node> stackTwo = new Stack<>();
+        stackOne.push(root);
+
+        while (!stackOne.isEmpty() || !stackTwo.isEmpty()) {
+
+            while (!stackOne.isEmpty()) {
+                Node temp = stackOne.pop();
+                System.out.print(temp.getData()+" - ");
+                if(temp.getLeftChild() != null) {
+                    stackTwo.push(temp.getLeftChild());
+                }
+                if(temp.getRightChild() != null) {
+                    stackTwo.push(temp.getRightChild());
+                }
+            }
+
+            while (!stackTwo.isEmpty()) {
+                Node temp = stackTwo.pop();
+                System.out.print(temp.getData()+" - ");
+                if(temp.getRightChild() != null) {
+                    stackOne.push(temp.getRightChild());
+                }
+                if(temp.getLeftChild() != null) {
+                    stackOne.push(temp.getLeftChild());
+                }
+            }
+        }
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
