@@ -520,6 +520,17 @@ public class TreeImpl {
     }
 
     /**
+     * Find the height of the binary tree using recursive way
+     * @param root
+     * @return
+     */
+    public int getHeightRecursive(Node root) {
+
+        return root == null ? 0 :
+                Math.max(getHeightRecursive(root.getLeftChild()), getHeightRecursive(root.getRightChild())) + 1;
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
