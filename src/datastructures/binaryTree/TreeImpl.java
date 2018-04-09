@@ -1,5 +1,6 @@
 package datastructures.binaryTree;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -400,6 +401,7 @@ public class TreeImpl {
 
     /**
      * Return the lowest common ancestor of given two nodes in a binary tree
+     * TODO
      * @param root
      * @param one
      * @param two
@@ -426,6 +428,94 @@ public class TreeImpl {
             return right;
         } else {
             return left;
+        }
+    }
+
+    /**
+     * Count the number of leaf nodes in a binary tree using recursion
+     * @param root
+     * @return
+     */
+    public int countLeafRecursive(Node root) {
+
+        if(root == null)
+            return 0;
+        if(root.getLeftChild() == null && root.getRightChild() == null)
+            return 1;
+        return countLeafRecursive(root.getLeftChild()) + countLeafRecursive(root.getRightChild());
+    }
+
+    /**
+     * Find the average of numbers at each level of a binary tree
+     * @param root
+     */
+    public void averageOfLevels(Node root) {
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int sizeCache = 0;
+            int size = queue.size();
+            sizeCache = size;
+            int sum = 0;
+
+            while (size > 0) {
+                Node temp = queue.remove();
+                sum += temp.getData();
+                size--;
+                if(temp.getLeftChild() != null)
+                    queue.add(temp.getLeftChild());
+                if(temp.getRightChild() != null)
+                    queue.add(temp.getRightChild());
+            }
+            System.out.println((sum)/sizeCache);
+        }
+    }
+
+    /**
+     * Print all the corner nodes at each level
+     * Time complexity O(n), Space complexity O(n)
+     * @param root
+     */
+    public void cornerNodesAtLevel(Node root) {
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int sizeCache = size; //Maintains the value of size of the queue for later comparison
+            boolean firstCheck = false;
+
+            while (size > 0) {
+                Node temp = queue.remove();
+
+                //When the queue contains only one element Just print it, since it's a corner element
+                if(sizeCache == 1) {
+                    System.out.print(temp.getData() + " - ");
+                }
+
+                //When the number of elements in the queue is more than one
+                if(sizeCache > 1) {
+                    //If the condition is reset then that node is the first node for that level
+                    if(firstCheck == false) {
+                        System.out.print(temp.getData()+" - ");
+                        firstCheck = true;
+                    }
+                    //If the current queue size is one and the and the cached size is more than one
+                    //It means that the current node is the last node in the queue and hence the corner one
+                    if(size == 1)
+                        System.out.print(temp.getData()+" - ");
+                }
+
+                //Usual stuff
+                if(temp.getLeftChild() != null)
+                    queue.add(temp.getLeftChild());
+                if(temp.getRightChild() != null)
+                    queue.add(temp.getRightChild());
+                size--;
+            }
         }
     }
 
