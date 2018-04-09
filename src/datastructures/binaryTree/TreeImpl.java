@@ -531,6 +531,26 @@ public class TreeImpl {
     }
 
     /**
+     * Construct a mirror tree of a binary tree
+     * Time complexity O(n), space complexity O(n)
+     * @param root
+     * @return
+     */
+    public Node mirrorTree(Node root) {
+
+        if(root == null) {
+            return root;
+        }
+
+        Node left = mirrorTree(root.getLeftChild());
+        Node right = mirrorTree(root.getRightChild());
+
+        root.setLeftChild(right);
+        root.setRightChild(left);
+        return root;
+    }
+
+    /**
      * Check if the tree follows the children sum property
      * @param root
      * @return
