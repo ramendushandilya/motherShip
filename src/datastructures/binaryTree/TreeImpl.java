@@ -229,6 +229,29 @@ public class TreeImpl {
 
     }
 
+    /**
+     * Morris traversal for pre order
+     * @param root
+     */
+    public void morrisPre(Node root) {
+
+    }
+
+    /**
+     * Morris traversal for In order
+     * @param root
+     */
+    public void morrisIn(Node root) {
+
+    }
+
+    /**
+     * Morris traversal for post order
+     * @param root
+     */
+    public void morrisPost(Node root) {
+
+    }
 
     /**
      * Prints the level order in reverse, that is from bottom to top
@@ -254,6 +277,22 @@ public class TreeImpl {
         while (!stack.isEmpty()) {
             System.out.print(stack.pop().getData()+"-");
         }
+    }
+
+    /**
+     * Print post order of a tree given the in order and pre order traversal
+     * @param in
+     * @param pre
+     * @param start
+     * @param end
+     */
+    public void postOrderFromInPre(int[] in, int[] pre, int start, int end) {
+
+    }
+
+    public int search(int key, int start, int end, int [] in) {
+
+        return 0;
     }
 
     /**
