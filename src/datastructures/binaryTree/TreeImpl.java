@@ -139,7 +139,6 @@ public class TreeImpl {
     /**
      * In order traversal of tree without recursion
      * Time complexity O(n)
-     * TODO See once more for clarity
      * @param root
      */
     public void inOrderNoRecursion(Node root) {
@@ -191,15 +190,45 @@ public class TreeImpl {
         }
     }
 
-    /** Pre order traversal of tree without recursion
+    /** Post order traversal of tree without recursion and using two stacks
      * Time complexity O(n)
-     * TODO
      * @param root
      */
-    public void postOrderNoRecursion(Node root) {
+    public void postOrderNoRecursionTwoStack(Node root) {
+
+        Stack<Node> one = new Stack<>();
+        Stack<Node> two = new Stack<>();
+        one.push(root);
+
+        //Traverse the tree in pre order fashion with difference being right subtree is visited before left one
+        while (!one.isEmpty()) {
+
+            Node temp = one.pop();
+            two.push(temp); //While doing the modified pre order traversal we push elements to stack
+            if(temp.getLeftChild() != null) {
+                one.push(temp.getLeftChild());
+            }
+            if(temp.getRightChild() != null) {
+                one.push(temp.getRightChild());
+            }
+        }
+
+        //Pop the second stack and it gives us the post order traversal
+        while (!two.isEmpty()) {
+            System.out.print(two.pop().getData()+" - ");
+        }
+    }
+
+    /**
+     * Post order traversal of a binary tree without recursion and using one stack
+     * TODO Needs revision
+     * @param root
+     */
+    public void postOrderNoRecursionOneStack(Node root) {
 
 
     }
+
 
     /**
      * Prints the level order in reverse, that is from bottom to top
@@ -597,6 +626,8 @@ public class TreeImpl {
             }
         }
     }
+
+
 
     /**
      * Check if the tree follows the children sum property

@@ -16,8 +16,6 @@ public class Runner {
         //Node mirror = tree.mirrorTree(root);
         //System.out.println(mirror.getData());
         //tree.preOrder(tree.mirrorTree(root));
-
-        tree.preOrder(tree.create());
-        tree.printSpiral(tree.create());
+        //tree.postOrderNoRecursionOneStack(tree.create());
     }
 }
