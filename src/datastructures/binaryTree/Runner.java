@@ -17,5 +17,9 @@ public class Runner {
         //System.out.println(mirror.getData());
         //tree.preOrder(tree.mirrorTree(root));
         //tree.postOrderNoRecursionOneStack(tree.create());
+
+        int[] pre = {10,8,3,5,2,2};
+        int[] in = {3,8,5,10,2,2};
+        TreeImpl.postOrderFromInPre(in, pre, 0, pre.length-1);
     }
 }

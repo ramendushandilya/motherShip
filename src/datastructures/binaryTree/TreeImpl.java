@@ -281,18 +281,34 @@ public class TreeImpl {
 
     /**
      * Print post order of a tree given the in order and pre order traversal
+     * TODO Look at it again
      * @param in
      * @param pre
      * @param start
      * @param end
      */
-    public void postOrderFromInPre(int[] in, int[] pre, int start, int end) {
+    static int index = 0;
+    public static void postOrderFromInPre(int[] in, int[] pre, int start, int end) {
 
+        if(start > end) {
+            return;
+        }
+        int id = search(pre[index++], start, end, in);
+
+        postOrderFromInPre(in, pre, start, id-1);
+        postOrderFromInPre(in, pre, id+1, end);
+        System.out.print(in[id]+" - ");
     }
 
-    public int search(int key, int start, int end, int [] in) {
+    public static int search(int key, int start, int end, int [] in) {
 
-        return 0;
+        int i = 0;
+        for(i = start ; i < end ; i++) {
+            if(in[i] == key) {
+                return i;
+            }
+        }
+        return i;
     }
 
     /**
