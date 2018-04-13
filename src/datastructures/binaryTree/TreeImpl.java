@@ -312,6 +312,33 @@ public class TreeImpl {
     }
 
     /**
+     * Print the nodes of a tree in diagonal fashion
+     * @param root
+     */
+    public void printDiagonal(Node root) {
+
+        if(root == null)
+            return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size > 0) {
+                Node temp = queue.remove();
+                while (temp != null) {
+                    System.out.print(temp.getData()+" - ");
+                    if(temp.getLeftChild() != null)
+                        queue.add(temp.getLeftChild());
+                    temp = temp.getRightChild();
+                }
+                size--;
+            }
+            System.out.println("\n");
+        }
+    }
+
+    /**
      * Count the number of half Nodes in a binary tree
      * Half node in a tree is a tree which has one child
      * Time complexity : O(n)
