@@ -1,10 +1,9 @@
-package datastructures.binaryTree;
+package datastructures.binaryTree.commons;
 
 /**
- * @author rams0516
- *         Date: 5/24/2017
- *         Time: 1:02 PM
+ * @author failedOptimus
  */
+
 public class Node {
     private int data;
     private Node leftChild;
