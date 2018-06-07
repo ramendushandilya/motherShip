@@ -31,5 +31,7 @@ public class TraversalRunner {
         traversals.recursivePreOrder(normalTree);
         System.out.println("\nPost Order traversal ::");
         traversals.recursivePostOrder(normalTree);
+        System.out.println("\nIn Order traversal no recursion ::");
+        traversals.inorderTraversalNoRecursion(normalTree);
     }
 }

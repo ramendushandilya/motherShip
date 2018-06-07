@@ -13,53 +13,7 @@ import java.util.Stack;
  */
 public class TreeImpl {
 
-    /**
-     * Tree traversal is broadly of two types
-     * Depth First Search (DFS)
-     * Breadth First Search (BFS)
-     * DFS is of three types
-     * Pre order, In Order, Post Order
-     * BFS is of one type, level order traversal
-     */
 
-    /**
-     * Pre order traversal of tree
-     * Time complexity O(n)
-     * @param root
-     */
-    public void preOrder(Node root) {
-        if(root != null) {
-            System.out.println(root.getData());
-            preOrder(root.getLeftChild());
-            preOrder(root.getRightChild());
-        }
-    }
-
-    /**
-     * In order traversal of tree
-     * Time Complexity O(n)
-     * @param root
-     */
-    public void inOrder(Node root) {
-        if(root != null) {
-            inOrder(root.getLeftChild());
-            System.out.println(root.getData());
-            inOrder(root.getRightChild());
-        }
-    }
-
-    /**
-     * Post order traversal of tree
-     * Time Complexity O(n)
-     * @param root
-     */
-    public  void postOrder(Node root) {
-        if(root != null) {
-            postOrder(root.getLeftChild());
-            postOrder(root.getRightChild());
-            System.out.println(root.getData());
-        }
-    }
 
     /**
      * Does the level order traversal of the tree
