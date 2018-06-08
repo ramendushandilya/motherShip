@@ -67,7 +67,7 @@ public class TraversalsImpl implements TraversalsInterface{
             current = current.getLeftChild();
         }
 
-        if(stack.isEmpty() == false) {
+        while(stack.size() > 0) {
             Node ejected = stack.pop();
             System.out.print(ejected.getData()+" - ");
 
@@ -84,6 +84,7 @@ public class TraversalsImpl implements TraversalsInterface{
 
     @Override
     public void inorderTraversalNoRecursionNoStack(Node root) {
+
 
     }
 
