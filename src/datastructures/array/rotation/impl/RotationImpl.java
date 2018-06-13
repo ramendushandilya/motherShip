@@ -45,4 +45,21 @@ public class RotationImpl implements RotationInterface {
         }
         return searchElementInSortedRotatedArray(array, key, low, mid-1);
     }
+
+    @Override
+    public int rotateBitsOfNumber(int number, int bits) {
+        return 0;
+    }
+
+    /**
+     * Rotate an array by k elements
+     * i/p : 1,2,3,4,5,6,7 o/p : 3,4,5,6,7,1,2
+     * @param array
+     * @param k
+     */
+    @Override
+    public void leftRotate(int[] array, int k) {
+
+
+    }
 }
