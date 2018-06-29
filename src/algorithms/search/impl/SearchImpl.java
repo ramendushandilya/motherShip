@@ -2,6 +2,8 @@ package algorithms.search.impl;
 
 import algorithms.search.SearchInterface;
 
+import java.util.Arrays;
+
 /**
  * @author failedOptimus
  */
@@ -114,9 +116,28 @@ public class SearchImpl implements SearchInterface {
         return -1;
     }
 
+    /**
+     * Use Exponential search to find an element in the array
+     * Find the range by doubling index at every iteration
+     * Time complexity : O(log n)
+     * @param input
+     * @param element
+     * @return
+     */
     @Override
     public int exponentialSearch(int[] input, int element) {
-        return 0;
+
+        //If the element is present at the first index return the index
+        if(input[0] == element)
+            return 0;
+
+        //While i is less than the length and the element at index is less than the element increment index by two
+        int i = 1;
+        while (i < input.length && input[i] <= element)
+            i *= 2;
+
+        //Do binary search on input array from i/2 index till end of array of the index i value
+        return Arrays.binarySearch(input, i/2, Math.min(i, input.length), element);
     }
 
     @Override

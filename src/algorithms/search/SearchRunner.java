@@ -18,5 +18,7 @@ public class SearchRunner {
         System.out.printf("\nElement found at with Binary Search="+search.binarySearch(sortedInput, 9, 0, sortedInput.length-1));
         System.out.printf("\nElement found at with Jump Search="+search.jumpSearch(sortedInput, 10));
         System.out.printf("\nElement found at with Interpolation Search="+search.interpolationSearch(sortedInput, 7));
+        System.out.println("\nElement found at with Exponential Search="+search.exponentialSearch(sortedInput, 9));
+
     }
 }
