@@ -14,8 +14,9 @@ public class SearchRunner {
         int[] normalInput = {5,4,3,2,1,6,7,8,9};
         int[] sortedInput = {1,2,3,4,5,6,7,8,8,8};
 
-        System.out.printf("Element found at ="+search.linearSearch(normalInput, 3));
-        System.out.printf("\nElement found at ="+search.binarySearch(sortedInput, 9, 0, sortedInput.length-1));
-        System.out.printf("\nElement found at ="+search.jumpSearch(sortedInput, 10));
+        System.out.printf("Element found at with Linear Search="+search.linearSearch(normalInput, 3));
+        System.out.printf("\nElement found at with Binary Search="+search.binarySearch(sortedInput, 9, 0, sortedInput.length-1));
+        System.out.printf("\nElement found at with Jump Search="+search.jumpSearch(sortedInput, 10));
+        System.out.printf("\nElement found at with Interpolation Search="+search.interpolationSearch(sortedInput, 7));
     }
 }

@@ -86,9 +86,32 @@ public class SearchImpl implements SearchInterface {
         return -1;
     }
 
+    /**
+     * Interpolation search works on a uniformly distributed & sorted array
+     * Position finding formula : low + ((element - a[low])/(a[high]-a[low])*(high-low)
+     * This position tells the nearest location to the element possible
+     * Best case time complexity : O(log log n) and worst case : O(n)
+     * @param input
+     * @param element
+     * @return
+     */
     @Override
     public int interpolationSearch(int[] input, int element) {
-        return 0;
+
+        int low = 0;
+        int high = input.length - 1;
+
+        while (low <= high && element >= input[low] && element <= input[high]) {
+
+            int position = low + (int) (((double)(high-low) / (input[high]-input[low]))*(element - input[low]));
+            if(input[position] == element)
+                return position;
+            if(input[position] < element)
+                low = position++;
+            if(input[position] > element)
+                high = position--;
+        }
+        return -1;
     }
 
     @Override
