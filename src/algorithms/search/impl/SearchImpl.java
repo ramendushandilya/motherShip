@@ -142,31 +142,124 @@ public class SearchImpl implements SearchInterface {
 
     @Override
     public int sublistSearch(int[] input, int element) {
+        //Low Impact
         return 0;
     }
 
     @Override
     public int fibonacciSearch(int[] input, int element) {
+        //Low Impact
         return 0;
     }
 
     @Override
     public int ubiquitosBinarySearch(int[] input, int element) {
+        //Low Impact
         return 0;
     }
 
     @Override
     public int linearSearchRecursive(int[] input, int element) {
+        //Low Impact
         return 0;
     }
 
     @Override
     public int recursiveSubstringSearch(int[] input, int element) {
+        //Low Impact
         return 0;
     }
 
     @Override
     public int unboundedBinarySearch(int[] input, int element) {
+        //Low Impact
+        return 0;
+    }
+
+    @Override
+    public int findMissingNumber(int[] input) {
+        //Low Impact
+        return 0;
+    }
+
+    @Override
+    public int findElementInSortedRotatedArray(int[] input, int low, int high, int element) {
+
+        if(low > high)
+            return -1;
+        int mid = (low + high) / 2;
+
+        //If element found at the mid position return it
+        if(input[mid] == element)
+            return mid;
+
+        //If the array from low to mid is sorted
+        if(input[low] < input[mid]) {
+            //If the element to be searched lies in the low to mid
+            if(element <= input[low] && element >= input[mid])
+                //Find in the first half
+                return findElementInSortedRotatedArray(input, low, mid-1, element);
+            //Find in the second half
+            return findElementInSortedRotatedArray(input, mid+1, high, element);
+        }
+
+        //If the element to be searched lies in the second half
+        if(element >= mid && element <= high) {
+            //Find in the second half
+            return findElementInSortedRotatedArray(input, mid+1, high, element);
+        }
+        //Find in the first half
+        return findElementInSortedRotatedArray(input, low, mid-1, element);
+    }
+
+    @Override
+    public int medianTwoSortedArrays(int[] input) {
+
+        //Low impact
+        return 0;
+    }
+
+    @Override
+    public void twoElementsSumClosestToZero(int[] input) {
+
+        int low = 0;
+        int high = input.length-1;
+        int sum = 0;
+        int sumMin = Integer.MAX_VALUE;
+        int min_l = 0;
+        int min_r = 0;
+        Arrays.sort(input);
+        while (low < high) {
+
+            sum = input[low] + input[high];
+            if(sumMin > sum) {
+                sumMin = sum;
+                min_l = low;
+                min_r = high;
+            }
+
+            if(sum > 0) {
+                low++;
+            }
+            if(sum < 0) {
+                high--;
+            }
+        }
+        System.out.printf("Elements closest to zero are"+input[min_l]+"=="+input[min_r]);
+    }
+
+    @Override
+    public void smallestSecondSmallest(int[] input) {
+
+    }
+
+    @Override
+    public void maxMinArrayLeastComparison(int[] input) {
+
+    }
+
+    @Override
+    public int kthLargestElement(int[] input) {
         return 0;
     }
 }

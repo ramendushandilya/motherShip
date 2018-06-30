@@ -34,4 +34,12 @@ public interface SearchInterface {
      * Library implementations of Binary Searching Algorithms
      */
 
+    int findMissingNumber(int[] input);
+    int findElementInSortedRotatedArray(int[] input, int low, int high, int element);
+    int medianTwoSortedArrays(int[] input);
+    void twoElementsSumClosestToZero(int[] input);
+    void smallestSecondSmallest(int[] input);
+    void maxMinArrayLeastComparison(int[] input);
+    int kthLargestElement(int[] input);
+
 }

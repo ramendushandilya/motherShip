@@ -13,12 +13,15 @@ public class SearchRunner {
         SearchInterface search = new SearchImpl();
         int[] normalInput = {5,4,3,2,1,6,7,8,9};
         int[] sortedInput = {1,2,3,4,5,6,7,8,8,8};
+        int[] rotated = {6,7,1,2,3,4,5};
+        int[] zeroSum = {1, 60, -10, 70, -80, 85};
 
         System.out.printf("Element found at with Linear Search="+search.linearSearch(normalInput, 3));
         System.out.printf("\nElement found at with Binary Search="+search.binarySearch(sortedInput, 9, 0, sortedInput.length-1));
         System.out.printf("\nElement found at with Jump Search="+search.jumpSearch(sortedInput, 10));
         System.out.printf("\nElement found at with Interpolation Search="+search.interpolationSearch(sortedInput, 7));
         System.out.println("\nElement found at with Exponential Search="+search.exponentialSearch(sortedInput, 9));
-
+        System.out.println("\nElement found at ="+search.findElementInSortedRotatedArray(rotated, 0, rotated.length-1, 7));
+        search.twoElementsSumClosestToZero(zeroSum);
     }
 }
