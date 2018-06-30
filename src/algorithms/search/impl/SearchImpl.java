@@ -222,6 +222,10 @@ public class SearchImpl implements SearchInterface {
     @Override
     public void twoElementsSumClosestToZero(int[] input) {
 
+        if(input.length < 2) {
+            System.out.printf("Invalid Input!");
+            System.exit(0);
+        }
         int low = 0;
         int high = input.length-1;
         int sum = 0;
