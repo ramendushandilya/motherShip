@@ -1,7 +1,6 @@
 package datastructures.linkedList.singleLinkList;
 
 
-import java.io.PrintWriter;
 import java.util.HashSet;
 
 /**

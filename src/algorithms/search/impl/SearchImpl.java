@@ -255,10 +255,12 @@ public class SearchImpl implements SearchInterface {
     @Override
     public void smallestSecondSmallest(int[] input) {
 
+        //Low Impact
     }
 
     @Override
     public void maxMinArrayLeastComparison(int[] input) {
+
 
     }
 
